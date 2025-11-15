@@ -1,0 +1,602 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>主义主义</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>在现代社会，尤其是在网络上，人们讨论问题时动不动就说：“你是唯心主义”“你是技术主义”“你是科学独断论”或者“你是某种原教旨主义”。但我们在使用这些“主义”的时候，到底在说什么？不同的主义之间究竟有什么差别？有没有一套方法，能帮助我们真正理解这些主义？</span></p><p><span>即使你把这些术语拿到百度百科、维基百科，甚至《斯坦福哲学百科全书》里去查，也不一定能看懂它们到底讲的是什么。就算你查到了，知道了很多细节，但如果你把握的只是细枝末节，而不是背后根本的立场，那你其实并没有真正掌握它。这样一来，你就无法在理解的基础上与他人有效争论，也无法清晰地阐述自己内心的想法——甚至你可能都不知道自己所持的观点，其实属于某种已有的主义或学说。</span></p><p><span>很多人心里想到一个点子，却不知道历史上是否有人已经提出过类似的想法，也不知道哪些哲学家的著作可以为自己的想法提供支持或深化的路径。因为你不知道如何分析自己内心的想法究竟属于哪一种主义、哪一种理论传统，于是就错失了进一步完善和推广这个想法的机会。</span></p><p><span>因此，今天我要介绍一种方法——说简单很简单，说复杂则深度极深——来帮助大家区分现实生活中、网络上遇到的各种“主义”、各种“论”、各种“说”。</span></p><p><span>我把这套方法称为“主义主义”（Ism-ism）。为什么叫这个名字？因为很多“什么什么主义”在英文中都以“-ism”结尾，比如唯心主义（idealism）、原教旨主义（fundamentalism）等等。而我的这套理论本身也是一种关于“-ism”的理论，所以我称之为“Ism-ism”（主义主义）。</span></p><p><span>这套理论的基本结构由两部分组成。在我看来，所有的主义都可以拆解为四个基本环节：</span></p><p><span>第一，关于</span><strong><span>场域</span></strong><span>的基本预设——即世界由哪些东西构成；</span>
+<span> 第二，关于</span><strong><span>本体</span></strong><span>的基本预设——即哪些东西是真实的；</span>
+<span> 第三，关于</span><strong><span>现象</span></strong><span>的基本预设——即世界向我们显现为何种样态；</span>
+<span> 第四，关于</span><strong><span>目的</span></strong><span>的基本预设——即这个世界最终趋向什么目标。</span></p><p><span>这四种基本预设共同构成了一套主义或理论的根本立场，其所有具体观点和细节表现，都是由这四个相互紧密关联的结构综合决定的。</span></p><p><span>当我们把握住这四个基本框架之后，就可以观察一套理论在这四个位置上分别填入了什么内容。在我看来，总共只有四种基本要素可以填入：</span><strong><span>秩序</span></strong><span>、</span><strong><span>冲突</span></strong><span>、</span><strong><span>中心</span></strong><span>和</span><strong><span>虚无</span></strong><span>。</span></p><p><span>我们可以把这四个要素看作是四种基本的力量或运动模式，将它们分别填入上述四个模块（场域、本体、现象、目的）之中。每个模块填入一个要素，就构成一种特定的主义。</span></p><p><span>举个例子：科学主义。在科学主义中，第一个模块（场域）填入的是“秩序”，第二个模块（本体）填入的也是“秩序”，第三个模块（现象）同样填入“秩序”。至于第四个模块（目的），则可能是不确定的——不同版本的科学主义对世界终极目的的理解并不一致。</span></p><p><span>因此，科学主义实际上有多种形态。如果你能把握其基本前提，并理解不同科学主义者对世界目的的不同设定，就能准确判断对方所主张的究竟是哪一种科学主义，以及其背后隐藏的思想立场。</span></p><p><span>接下来，我会用大约八讲的内容，逐一详细讲解这八个要素（四个模块 × 四种要素）。讲解完毕后，我们将尝试进行组合。理论上，如果四个模块都填满，总共可以组合出 4⁴ = 256 种主义。</span></p><p><span>当然，并非每一种组合都对应一个现实中存在的主义。有些组合可能只对应某种非常具体的理论姿态或生活态度。但通过这种系统性的分析，我们就能更清晰地识别和定位各种思想立场。</span></p><p><span>哲学思考首先要掌握的一个要素，叫做“场域”。</span></p><p><span>通常人们会说“整个世界”，但这其实已经是一种哲学立场了。审慎的哲学家不会轻易谈论“这个世界”如何如何。一个蹩脚的哲学爱好者可能会动辄问：“世界是怎么样的？”但如果你是真正的哲学家，你不会直接讨论“世界”，而是会讨论“场域”。</span></p><p><span>因为“场域”这个词所预设的东西更少一些。一旦你说“世界”，就意味着时间和空间是连在一起的，并且构成一个稳固的整体——这个说法背后包含了许多未经检视的预设。</span></p><p><span>因此，我们会把“场域”当作哲学思考的第一个环节。</span></p><p><span>“场域”我其实也介绍过，它有四种不同的状态，分别代表四种非常复杂、非常宏大的思想分支。</span></p><p><span>接下来是本体。第二个环节是本体，即探讨“什么东西是真实的”“真实存在的东西是什么”。在场域之中，哪些东西是坚硬的、始终在那里的？你可以把场域和本体的关系理解为：一个房子里放了很多家具或电器，这些家具和电器就是本体。</span></p><p><span>本体其实就是“存在”。我们也可以用“存在”这个词来指代它：这个东西在场域中存在着。那么问题来了：这些存在的东西是从哪里来的？它们是场域内部生产出来的吗？是凭空冒出来的吗？还是根本就不存在所谓的本体——也就是说，这个房子里其实是空的，根本没有家具？</span></p><p><span>也有这种可能性：房子是空的，没有家具；而人睡在里面时，实际上一直在做梦。</span></p><p><span>因此，关于本体，也存在多种情况。具体而言，关于“什么是真实”，共有四种可能的情形。而这四种情形，与前面场域的四种状态两两相乘，就会产生十六种组合。我们将这十六种组合称为“十六种本体论预设”。</span></p><p><span>如果只看前两个环节（场域与本体），实际上讨论的就是本体论问题：这个房子究竟是什么样的？里面到底有哪些东西存在？存在的东西具有怎样的性质？或者说，里面根本什么都没有——不存在任何本体。这正是本体论所要探讨的核心内容。这是第二个环节。</span></p><p><span>第三个环节叫做现象。</span></p><p><span>现象的线下本体是一个“对子”，或者说，问题在于：场域本身是如何向我们显现的？本体又是如何向我们显现的？在现象背后，始终站着的是人——人的生存，或者说人的体验。只有当主体存在时，才有信仰可言。</span></p><p><span>当然，也有人认为，人的存在本身也不过是现象，是意识的一种错觉。那么我要追问：意识又是什么？无论如何，我们绕不开哲学的基本门槛，即必须讨论这样一个问题：总有一个接受者在体验某种东西。</span></p><p><span>这不仅仅是说场景中“有某种东西”，而且这个接受者还会体验到、感受到某种东西。这种被体验到的东西，可以说是一种表面上的东西，浮现在表层的、临时的、暂时的东西。这就是“现象”这一环节。</span></p><p><span>最后的环节就是目的。</span></p><p><span>前面忘了说明：前面这三个东西——场域、本体、现象——组合在一起时，如果单看现象这个维度，可以称之为认识论；单看场域与本体这两个维度，则属于本体论。而如果将这三个环节结合起来整体看待，就可以称之为一种“生存论”——它关注的不再是单纯的本体或认识，而是人在其中应该如何生存。</span></p><p><span>这种关于“如何生存”的思考，势必会导向一个结果，即所有这三样东西（场域、本体、现象）共同发生作用。举个例子：有一座房子，房子里有东西（本体），这个东西被人感受到（现象）——人在其中进行身份活动，感到冷、感到暖、感到开心或快乐，这些都是现象。最终，人住在里面，或者这个房子被设立在那里，必然有一个目的：它为什么要设立在那里？它的目的是什么？</span></p><p><span>关于“目的”，同样可以分为四种类型。而现象的来源也有四种，其显现方式也有四种。实际上，这四个环节——场域、本体、现象、目的——各自都有四种可能的取向，并且这四种取向是相同的四种基本要素（例如秩序、冲突、中心、虚无）。当我们把这四个环节相乘，即 4×4×4×4，总共可以得出 256 种哲学立场。</span></p><p><span>这就是我们的基本框架：四个环节，构成了整个理论的基本结构。</span></p><p><span>我刚刚提到的这四个环节，现在我们就要尝试填入这四个选项。其实，这四个选项所对应的第一个要素，可以称为“秩序”，或者也可以叫作“逻辑”。这里所说的“逻辑”，并不是指那种死理性派一厢情愿地认为世界天然具有秩序性的那种简单理解。</span></p><p><span>这种秩序，更像是一种律令体系。它具有两个特点：第一，它是僵死的；第二，它是盲目的。它唯一知道的事情，就是应用它自身——不断地作为它自身而存在，不停地执行自己的使命：传达命令，并监督命令的执行。</span></p><p><span>此外，这种秩序还有一个特征：它是自我循环的。它会盲目地扩张其网络，将自身应用到所有人身上。这就像许多民间科学家（“民科”）一样，一旦自认为发现了某种真理，就坚信这个真理放之四海而皆准。这种盲目扩张且自我循环的特性，使它无法跳出自身的循环，也无法从外部观察自己。它只是一个一维的、不断自动重复运行的东西。</span></p><p><span>我们现代人无时无刻不依赖这种秩序。它就像计算机中的自动机：设定一套指令，它就会不停地自行运行。它也像复读机或按键精灵这类工具，只是不断地重复利用自身。这种东西让人感觉很不舒服，但又不可或缺——没有它，整个体系就会瓦解。</span></p><p><span>我们可以以游戏为例：特别是那些“刷刷刷”的游戏，其本质就是一个秩序系统。它是一个盲目扩张的自愈系统，同时也是自我循环的。把握住这一点，你就理解了什么叫“秩序”。</span></p><p><span>好的，第二个点叫做“冲突”，或者我们可以说，第二个要素是“冲突”。它与“秩序”不同：冲突表达的是秩序的失败。我们知道，秩序具有一种无限自我循环、并试图无限扩张的倾向，其目的是让整个系统都变得有序化。但这种努力必然会失败。</span></p><p><span>为什么会失败？因为要使系统变得有序，就必须预先设定某种东西是“更有序”的，而其余部分则是“无序”的。换言之，你必须能够区分哪些是有秩序的，哪些是无秩序的。而要做到这一点，你就需要一个超越原有秩序的东西——一种更高级的代码，或者说，一种“超秩序”。</span></p><p><span>我们可以称这种更高级的规定者为“元秩序”（meta-order）。但问题在于，“元秩序”本身不可能存在。因为一旦你引入一个更高层级的秩序来规定什么是有序、什么是无序，那么又需要另一个更高级的秩序来规定这个“元秩序”是否合法。如此一来，就会陷入无限倒退。</span></p><p><span>因此，任何试图确立终极秩序的努力，最终都会产生一种分裂——即内部与外部的分裂。也就是说，必须借助某种“外部”的东西，来规定系统内部哪些部分属于秩序，哪些部分属于无序。这正是冲突产生的根源。</span></p><p><span>秩序的运动必然带来失败。例如，当一种体系试图将一切差异消除、将所有事物同质化时，它实际上已经预设了“差异”的存在——否则就无从谈起“消除差异”。你之所以知道可以用某种方式抹平差异，恰恰是因为你已经识别出了差异本身。因此，冲突并非偶然，而是这个世界运行的必然机制。</span></p><p><span>典型地，冲突体现了我们无法思考“纯粹虚无”这一事实。事实上，当我把“虚无”写出来、说出来的时候，这本身就已经是一种非法操作。因为如果虚无真的是虚无，它就不应占据任何时间、空间，不应占据任何注意力，也不应成为焦点或在场域中现身。正因如此，我们根本无法真正思考虚无。</span></p><p><span>当然，某些传统——比如禅宗——会通过特定的修行方式，尝试以“不朝向”的方式去朝向那种不可思考之物。但这已经牵涉到某种辩证运动。</span></p><p><span>因此，冲突必然涉及一种辩证运动。我们必须牢记：冲突并不是两个外在事物之间的对抗，而是某个东西与其自身的冲突。</span></p><p><span>冲突代表的是“同一性”的不可能。同一性是不可能的，它一定会分裂为内部和外部。任何一个看似同一的东西，你实际上都是从外部去把握它的。例如一个苹果，你之所以能把它识别为一个苹果，是因为存在着观察者与被观察者之间的关系。正是在这种关系中，你才能形成“这是一个苹果”的判断。</span></p><p><span>因此，同一性从一开始就是分裂的。任何看似同一的事物，如果我们能够把握到其中的冲突，并将这种冲突运用于场域、运用于本体的不同环节上，我们就能展开一种辩证的哲学思维。</span></p><p><span>反之，如果我们不具备这种能力，就会停留在实在论的层面。但其实你不必担心——我们天生就具备把握这种不可能性、把握这种冲突、把握这种失败的能力。否则，自我意识根本不会产生。</span></p><p><span>我们的自我意识之所以会产生，正是因为秩序无法完全整合我们的整个神经系统。如果我们的神经系统有一套完备的指令，能够让我们对所有刺激都做出恰当反应，那么我们根本不需要意识，也根本不需要一个超越神经系统的操作平台来进行干预。你只需闭上眼睛，让身体自动运行就可以了。</span></p><p><span>正因为我们神经系统试图将所有生存行为有序化的努力失败了，才需要一个“自我”来做出抉择，才有了不确定性，才有所谓的自由。因此，冲突恰恰是自由的前提。仅有秩序是不可能的，因为秩序注定会失败。</span></p><p><span>然而，总有一些人一厢情愿地相信世界充满了自洽的秩序，认为一切都没有问题，所有事物都是从内部自然生发出来的。这种想法是天真的。这些人对内在冲突和失败视而不见，但这些冲突并不会消失，而是会以各种混乱、诡异的方式显现出来——这就是病理化，或者说异化。</span></p><p><span>因此，即便我们在讨论那些表面上与秩序相关的哲学立场时，也会发现其中隐藏着各式各样的冲突。如果没有这些冲突，整个体系根本无法运动起来。这就是关于“冲突”的第二点。</span></p><p><span>我们要填入选项框中的第三个要素，叫做“中心”。这个“中心”其实非常简单，指的就是人的自我意识。我们也可以用另一个词来表达它，那就是“自我”。</span></p><p><span>无论是“日心说”所宣称的太阳是宇宙中心，还是讨论国家的中心、历史的中心，其真正的名字都叫“自我”。在你的任何时间、任何历史、任何当下，都是以这个“自我”为中心的。所有事物都围绕自我展开。</span></p><p><span>你可以自己反思一下：你生活的每一个瞬间，有没有哪一个瞬间是真正脱离了这个自我中心的？没有。如果某个瞬间真的脱离了你的自我中心，那么它甚至不能被称为“瞬间”，也不能构成你的历史。</span></p><p><span>因此，我们的教育和日常生活才会不断试图让你相信：世界存在着一些脱离自我的、乱七八糟的其他东西。而我要讨论的这个“中心”，就是“自我”——人的自我意识。</span></p><p><span>当然，我们这里并不讨论“去中心化”。“去中心化”指的是人有时会失焦，会忽然遗忘自我，把原本属于自己的中心位置让渡出去——让给宇宙、让给民族或人类的历史，或者让给某种神秘之物。但我们这里讲的是尚未去中心化的状态，也就是“自我”本身。</span></p><p><span>所以，当那个选项框中填入“自我”时，我们所说的“中心”就是指自我。我们讨论的正是这个自我，这个自我意识——它是你可以把握的中心，是你能体验到的中心，是所有要素向其汇聚的那个点。时间、空间、本体、现象……所有这些东西，最终都在其中发挥作用，而这个核心就叫“自我”。</span></p><p><span>就像消费者一样：在整个信息与生产的链条中，只有当产品最终进入消费者的体验那一刻，整个系统才被视为成功。这让我们误以为资本才是系统的中心，才是人类活动的中心。但实际上，人才是这个运动的真正中心。</span></p><p><span>然而，这个中心是非常沉重的。它很重，因为它归根结底没有任何落脚点。如果你认真思考，就会发现：你的存在没有任何东西作为支撑。你平白无故地存在着，并且作为整个世界的中心存在着。这种责任极其沉重。</span></p><p><span>为了逃避这种沉重的存在负担——我们称之为“存在主义焦虑”或“存在主义危机”——大多数人在形成清晰自我意识的同时，也会产生逃避机制。例如开始追星、对某项体育运动上瘾、极度迷恋某种事物，从而将中心让渡出去。这就是“去中心化”的过程。</span></p><p><span>在这种状态下，人会进入一种抑郁或歇斯底里的状态，把某个并非自身的东西当作比自己更重要的存在去崇拜。爱情就是一个典型例子；道德也是如此——人们常常认为德性的成就比自我更重要。这些其实都是在试图摆脱那个沉重的中心，逃避生存的压力。</span></p><p><span>正如米兰·昆德拉在《不能承受的生命之轻》中所写的那样，“不能承受”的正是这种“轻”——即没有重量、没有根基、却要承担全部意义与价值的自我。所以，唯一作为中心的，就是那个必须承受所有事件、所有意义和价值的东西，也就是“自我”。</span></p><p><span>因此，当我们提到“中心”时，你一定要记住：我们所指的就是“自我”。</span></p><p><span>第四个可以填入的要素是“虚无”。其实，当“虚无”被填入那个空位时，它并不需要再填入其他内容——因为“虚无”就是什么都没有，一无所有。正因为它什么都没有，所以它又可以包含一切。</span></p><p><span>你可以说，秩序是从虚无中生产出来的；也可以说，冲突和矛盾之所以能产生空间，正是因为虚无作为一种否定性的力量介入到了秩序之中。秩序突然意识到：“原来我可以不这么辛苦，不这么累。”于是，它便开始自我分裂。同样，自我也是如此：当自我感受到生命力的不可承受，往往是因为它体验到了一种虚无感——它不知道该如何行动，因为没有一个既定的技能或秩序可供遵循；甚至当它试图否定现有秩序时，也会发现这种否定活动与秩序本身的运行并无实质差别，缺乏真正的差异。</span></p><p><span>因此，虚无既代表某种希望——因为它能够生成新的东西；也代表某种绝对的不可能、绝对的沮丧、颓丧与无力。这种“绝对性”，源于虚无背后那种前语言的、不可言说的、沉默的东西。我们可以将虚无背后的存在理解为一种沉默、一种不可思议之物、一种神秘之物。</span></p><p><span>如果那个空位中填入的是“虚无”，那么它可能意味着两种情况：要么这个空本身并不存在；要么即便这个东西存在，我们也对它无话可说，无法采取任何立场或态度。此外，它也可能意味着这个空位蕴含着无限的可能性。</span></p><p><span>由此可见，“虚无”是一个非常复杂而庞杂的概念。它具体呈现为何种样态，完全取决于其所处的具体语境。因为虚无本身不持任何立场、不采取任何姿态，所以它相当于一个窗口、一个切口，进而敞开一片新的视域。</span></p><p><span>从这个意义上讲，虚无与秩序其实非常相近。因为秩序同样是一种让世界敞开的力量，而虚无也是一种让世界敞开的力量。</span></p></div></div>
+</body>
+</html>
