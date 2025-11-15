@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 左侧菜单 */
+.sidebar {
+  width: 380px;
+  background: white;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 0;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.sidebar h2 {
+  padding: 0 20px 12px;
+  font-size: 16px;
+  color: #334155;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 0 20px;
+  margin-bottom: 0px;
+}
+
+.sidebar .group>span {
+  display: block;
+  padding: 8px 12px 4px;
+  font-weight: bold;
+  color: #334155;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar .group ul {
+  list-style: none;
+  margin-top: 2px;
+}
+
+.sidebar .group ul li {
+  padding: 0 20px;
+  margin-bottom: 0px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #475569;
+  padding: 4px 12px;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 13px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* 右侧内容 */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background: white;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.main-content article {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0f172a;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.main-content h2 {
+  font-size: 22px;
+  margin: 24px 0 16px;
+  color: #1d4ed8;
+}
+
+.main-content p,
+.main-content ul,
+.main-content ol {
+  margin-bottom: 16px;
+}
+
+.main-content ul,
+.main-content ol {
+  padding-left: 20px;
+}
