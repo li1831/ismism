@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>哲学意识形态大全-总纲</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>我们来重新讲哲学大全。其实不仅仅是哲学大全，应该是哲学与意识形态大全。我把它叫做“主义主义”（ismism），因为所有的主义都会以这个“–ism”做后缀，比如“Idea”——唯心主义，或者其他的主义都会以“–ism”做后缀。所以大部分主义都是“–ism”做后缀的。</span></p><p><span>那我搞的这个东西，你可以把它看成是“左翼哲学速成”。“左翼哲学”不是“左翼的哲学”，而是左翼所用的哲学速成大法，目的是用来训练我的同伴的。速成这一套，最后导向的肯定是左翼的哲学。所以，如果你的立场跟我不一样，那就不要学，没有必要学我这个东西。好吧？所以我把这套东西叫做 ismism，有点好玩。我的名字缩写也是这个，就有点意思。</span></p><p><span>“主义主义”是怎么出来的？“主义主义”是怎么构成的？所有哲学、所有意识形态、所有思想，都包含四个部分：第一是关于框架，就是本体论框架（Ontological），或者我喜欢把它叫“场域”。第一个环节是场域；第二个环节是关于场域里真实存在的东西——本体；第三个是关于里边的现象——本体现象；第四个是整个结构的目的。</span></p><p><span>你可以把这个“场域”看成是一个存在论的维度。用海德格尔的说法，就是存在论维度（ontological）、系统存在论的结构、存在论的框架（ontological structure）。这里的“场域”不是指事物发生的空间，它不是空间；这里的场域指的是叙事的背景，是意义所在的场域——“what makes sense in it”，意义存在的地方。所以这个场域是一个存在论的框架。</span></p><p><span>“本体”就是存在性的内容，就是叫 </span><strong><span>Noumenon</span></strong><span>，具体存在的内容，它们是本体。“现象”则是主体性的维度——主体性的感知。我把这叫主体性的感知（subjective perception）。</span></p><p><span>最后一个是目的，是整个东西的运动方向，是目的论的方向，是它的运动模式。</span></p><p><span>所以我们把这个“场域”通常叫场域论。如果它比较差，那就是宇宙论（cosmology）；如果它比较好，它就是一种场域论。</span></p><p><span>“存在性的内容”就是本体论。老译法叫本体论，也可以叫存在论（ontology）。</span>
+<span> “主体性的感知”这个维度，就是认识论（epistemology），也可以对应心理学的维度。</span>
+<span> 最后是目的论（teleology）。当然也包括伦理学。如果某个理论哲学性不强，而伦理学性更强，那么目的论就是伦理型伦理学，代表某种伦理学。</span></p><p><span>这样，我们就把所有理论分成四块。四块之后，我们称作“四个格”。四个格之间用斜杠表示，总共三个斜杠：场域 / 本体 / 现象 / 目的。这里面可以填数字：1、2、3、4。</span></p><p><span>举例，比如我们填“4231”，随便填一个。它具体是什么，我现在不告诉你，后面会讲。它可能是一种列宁主义。</span></p><p><span>现在我们来讲“1、2、3、4”的含义：</span></p><p><strong><span>1</span></strong><span> 代表同一性、一致性、整全性，不被打破的整全性。它代表一种循环运动，一种无脑的循环运动、无限循环的运动，就是不停空转的那种运动。这个空转就是“1”。</span></p><p><strong><span>2</span></strong><span> 代表对抗性，代表不一致性，是不可弥合的分裂。它是一种分裂的运动：循环无法持续，它裂开了，形成冲突与对抗。它是一种外在的二元对立，两者的不一致性——二元分离。</span></p><p><strong><span>3</span></strong><span> 代表中心化、中介性（mediated）。就是上述二元对立被调解，有一个居间调节的妥协。它具有妥协性，是中心化的运动，是一种下坠的运动，朝向中心下坠。就像亚里士多德描述的，两者都朝向中心。矛盾被调和后，就变成垂直运动，大家朝向同样的中心，下坠到那个锚定点。中心往往会具体化为社会、社群，或者某个具体的中介结构。</span></p><p><strong><span>4</span></strong><span> 代表内在分裂，是内在的不一致性，代表一种“不可能性”（Impossibility），代表虚无。它代表开放性、敞开，是一种未知的开放运动，与 3 的“向内收缩”相反。3 是中心化，4 是敞开。4 的运动模式是不确定的，是混沌型的开放。</span></p><p><span>这四个也可以对应海德格尔的“四重整体”（fourfold）：天、地、神、人。</span></p><p><span>在我这里：</span>
+<span> </span><strong><span>4</span></strong><span> 类似“大地”（Earth），但我把大地理解为敞开性的力量。</span>
+<span> </span><strong><span>1</span></strong><span> 类似“天”（Heaven），是真理的解蔽（Disclosure），是一种存在论闭合。</span>
+<span> </span><strong><span>3</span></strong><span> 则是“人”，即中心化、中介。</span>
+<span> </span><strong><span>2</span></strong><span> 是“神”，代表原初的对抗。</span></p><p><span>你也可以把这四个理解为：真理、存在、虚无、矛盾。</span></p><p><span>这四者对应四种运动：</span></p><ol><li><p><span>循环运动</span></p></li><li><p><span>分裂运动</span></p></li><li><p><span>中心化下坠运动</span></p></li><li><p><span>敞开运动（未知、混沌、不限定）</span></p></li></ol><p><span>这个就是“主义主义”。</span></p><p><span>那么我们把东西填进去，就会有不同的东西出来了。我要主要介绍四大类。</span></p><p><span>一开头的所有我通通把它们叫做一个很贬义的名字，叫“形而下”。我之前也会把它们叫做“实在论”，反正就是 low 逼，不能叫哲学。这些玩意不能算哲学，所有一开头的都不能叫哲学，都叫意识形态，通通都是意识形态。我对他们的批判都是前反思——前反思，就是笨蛋。</span></p><p><span>“一”意味着什么？一开头意味着场域——就是背景性的存在论框架——是闭合的。而且不仅仅闭合，这个场域、这个存在论框架，不仅是闭合的，而且是完美的、完美无缺的，是在那里循环运动的，是一个保证好的背景，一个毫无裂痕、没有任何不可能性会发生的、打理好的舞台与背景。</span></p><p><span>所以，这种一字头的人，他不仅是一种前反思的，而是被按在前反思之中。他不是诗意的栖居，他是无脑的栖居，无脑的 being-in-the-world，无脑地栖居在这个存在论框架里面。无脑地栖居在存在的框架里，与海德格尔所要求的诗意的栖居完全相反，就是“brain in the world”。</span></p><p><span>他觉得这个世界——world 本身不是那个场域，但他们会把这个 world 短路，认为它就是背景性存在论框架。他们把 world 等同于那个场域，这是非常蠢的。</span></p><p><span>1-1，就是把这两个东西短路了。1-1的人会短路地认为：world 是意义，是场域，是同一个东西——世界本身就是那个唯一的场域。</span></p><p><span>这种想法就是一种“科学实在论”。他们不仅认为二者是同一个场域，还认为被同一种秩序主宰，而且这个秩序完美无缺，在那边永恒循环。</span></p><p><span>这种东西就叫形而下学。只要你 IQ 大于等于 70，其实你就可以思考哲学。当然这不是瞧不起 IQ低的人，而是说 IQ 代表一种能量，是思考抽象问题的能力。你只要勤于思考，态度端正， IQ 会长的。勤于思考就很简单。</span></p><p><span>一字头的形而下学，我们也可以把它叫“实在论”。这种人可以叫“学哲的”。学哲的人，就是他学了一套东西，用来让别人闭嘴，用来折磨人的。他就是抱大腿——他的理论是用来让别人闭嘴、也让自己闭嘴的。学了这套东西就觉得可以吃天下了，追求所谓“永恒真理”的那种人。</span></p><p><span>但你既然要学哲学，你就应该默认：哲学的问题是不确定的，没有永恒真理。至少你需要探索，不存在一个理论体系能告诉你什么是永恒真理。如果我直接告诉你永恒在哪儿，那你就不要活了，对不对？</span></p><p><span>反正一字头就是形而下学。</span></p><p><span>然后是二字头。二字头的话，如果场域论里是二字头，那它就是一种形而上学，而且是一种前观念论的形而上学。前观念论，就是前笛卡尔、前康德的那种形而上学。不是说历史时代在笛卡尔之前，而是说思维抽象水平在笛卡尔之前、康德之前。康德之所以伟大，是因为他反对形而上学，通过反对形而上学，他第一次勾勒出“合围形而上学”的可能性。</span></p><p><span>所谓形而上学，就是不把主体性作为主体性引入哲学问题域，而是把主体性当成一个棋子、一块砖，被摆来摆去。前批判性思维。大部分中国哲学都是这种前观念论的形而上学；佛教、印度哲学也是。</span></p><p><span>前观念论把主体性当成场域中的一个棋子，但问题是谁在摆？你在进行这些理论活动的时候是谁在“摆”？所以这是前反思的；他没有意识到哲学是自我指涉的理论活动。当然，这种思维已经比一字头好了。</span></p><p><span>一字头也可以叫“气血”——“形而下者谓之器”，这些人学的都是“气”。</span></p><p><span>二字头则可以算作一种“道学”——场域中的对抗关系。场域里面有一个基本分裂：存在论框架本身的基本分裂。</span></p><p><span>分裂成两个部分：一个叫“道”，主动的；一个叫“规则”，被动的。他们把场域分成主动的高阶部分，和被动的低阶部分。名字虽不同，但逻辑一致。</span></p><p><span>两者之间有冲突。有时会变成隐喻性的分类，比如“无/有”“存在/本质”“时间/空间”的对立。</span></p><p><span>他们认为这些不是具体存在，而是背后的规则，是源代码。源代码中有更高级、主动的规则，也有低级、被动的规则——至少它是分裂的。</span></p><p><span>我通常把这种分裂归结为“存在与存在者的分裂”。因为形而上学的问题是：“为什么有存在而不是无？”（Why is there something rather than nothing?）</span></p><p><span>他们把握到的不是“有的东西 vs. 没有的东西”，而是一种力量：</span>
+<span> ——一种可以自我去实体化的力量（“无”）</span>
+<span> ——一种不能自我去实体化、会被实体化的力量（“有”）</span></p><p><span>“无”更高级，因为它可以隐藏自己。“有”则必须下场搏杀。</span></p><p><span>这是纯政治学意义上的分裂，是 power 的分裂：谁下场干脏活。</span></p><p><span>当一个人政治上觉醒（political），他自然会哲学上觉醒。政治不觉醒的人不会意识到规则之间也有分工与牺牲。</span></p><p><span>规则有两类：主动的规则与不主动的规则。主动的规则可以隐藏自己，不被实体化；不主动的规则则不得不跌落凡尘，与人交手。</span></p><p><span>如果把规则看成是统治者（rulers），那意味着统治者本身也是分裂的：他们必须牺牲一部分统治者——“losers among the rulers”。这部分人必须下场与被统治者（the ruled）真刀实枪地干。</span></p><p><span>你只要政治上觉醒到“庄家内部是分裂的”，你就能意识到：背后的本体结构也必定分裂。凭什么它毫无矛盾？它自己肯定有问题。</span></p><p><span>我不管你叫什么：上帝、佛、物质、绝对精神、无，或任何东西——背后的框架肯定有问题。</span></p><p><span>你会发现有些力会实体化成自然力量出现，有些更加高级的力量永远不会出现。所以你就会意识到：既然它能出现也能不出现，那它内部肯定是有分裂的。</span></p><p><span>因为如果它能完全主宰你，那它直接全部隐藏或全部显现就好了，为什么要一部分显现、一部分不显现？说明它自己内部有问题。</span></p><p><span>这就是形而上学的基本思维。只有这个“缝”裂开，思考形而上学才有必要。否则你只是围着那个闭合系统转圈，为它擦粉，说它伟大。</span></p><p><span>真正的形而上学——虽然是前观念论——但它已经发现：场域本身是分裂的。也就是简单一句话：庄家内讧了。</span></p><p><span>好的，这是第二个。</span></p><p><span>第三个，如果场域是三开头，那么它就是我们通常说的——观念论水准，观念论阶段，关键的阶段。这个场域是中心化的：“我也是庄家，自我意识，我也是庄家。我不仅仅是庄家，我是那个内讧庄家的调解者，我是劝架的。”</span></p><p><span>三字头是观念论阶段，笛卡尔阶段。只有在笛卡尔那里，主体性才成为辩护——我的内在观念关于善的观念，是辩护上帝存在的必要条件。主体性内部的这些东西非常重要，离开它，很多事情无法无条件成立。</span></p><p><span>笛卡尔的《第一哲学沉思录》为什么如此重要？人类走到那个阶段需要很长时间。甚至可以说：现在我们的人口大多数，距离笛卡尔式还很远。</span></p><p><span>这是因为内讧的庄家需要我来做调解。这种精神极具叛逆性。很多人可以设想“两个派系互相斗争决定了我们生活的一切”，但很少有人敢想：“我们这些被主宰、被决定的人，主体意识本身是重要的。”敢这样想的人，至少已经进入了观念论阶段。</span></p><p><span>为什么这种哲学当时是布尔乔亚哲学？因为布尔乔亚在贵族和僧侣（religion and regime）之上获得了力量。但他的力量归根结底来自普罗大众。布尔乔亚哲学认为：“我是内讧庄家的调节者。”所以它属于观念论阶段。</span></p><p><span>要进入观念论阶段，政治意识至少要觉醒。主体意识必须中心化——不仅以人为本，而是以“我”为本。“我”即一人称意识，是“说我者”，以说我者为中心。</span></p><p><span>三字头对应布尔乔亚哲学；二字头对应贵族与僧侣哲学；一字头对应未觉醒的平民哲学。三字头代表布尔乔亚哲学。</span></p><p><span>第四个，四字头，对应场域开头，代表本体论框架是开放的。激进地说，它“不存在”，或者它不积极显现。存在的本体论框架是不一致的、内在冲突的，内部混乱，但有一定斗争和矛盾。矛盾是“潜在的”，不会积极显现，也不会在理论中直接呈现。</span></p><p><span>四字头代表唯物主义，尤其是辩证唯物主义。它对本体论框架持开放性立场，不是科学实在论的庸俗唯物主义。宇宙、世界、意义领域、物理与意义领域框架、二分界限都是不确定的，主体设定的，是主体生存、劳动和实践创造的。</span></p><p><span>在这种意义上，四字头是辩证唯物主义，是觉醒了的普罗大众哲学。此时它已不是传统意义的哲学，而是一种新的意识形态或理论工具。</span></p><p><span>总结：</span></p><ul><li><p><span>一字头：未觉醒平民哲学</span></p></li><li><p><span>二字头：贵族/僧侣哲学</span></p></li><li><p><span>三字头：布尔乔亚哲学</span></p></li><li><p><span>四字头：觉醒平民哲学</span></p></li></ul><p><span>每个大类有四个小类：</span></p><ol><li><p><span>科学时代论</span></p></li><li><p><span>宗教</span></p></li><li><p><span>庸俗唯我论</span></p></li><li><p><span>庸俗虚无主义（或“用剑”）</span></p></li></ol><p><span>每类又有16种细分，整体形成一个矩阵：</span></p><ul><li><p><span>四位分支：4×4×4×4 = 256</span></p></li><li><p><span>三位分支：4×4×4 = 64</span></p></li><li><p><span>二位分支：4×4 = 16</span></p></li><li><p><span>一位分支：4</span></p></li></ul><p><span>总计：256 + 64 + 16 + 4 = 340种；若包含自身则为 341 种哲学意识形态。</span></p><p><span>这个体系不是完美拼合的，可以视作一种入门工具，用于判断哲学立场。前四类（1234）也严格对应黑格尔辩证法四步骤：正题、反题、虚假的合题、真实的合题（不可避免的虚假合题）。</span></p><p><span>这个体系可以作为娱乐产品的意识形态分类，也可用于哲学入门。每个方块（16个方块）可用来标记哲学段落、理解哲学立场，是最基础、灵活的入门工具。</span></p></div></div>
+</body>
+</html>
