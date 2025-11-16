@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>11科学实在论</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>今天讲“主义主义”的1-1。这个学说是科学实在论。科学实在论的代表人物原本写的是亚里士多德，因为亚里士多德那里有成熟的本体论。他把“存在”彻底把握为“存在者”——一个场域中的存在者。所以，存在者序列的分类学就是所谓的本体论（ontology），也就是“实论”。</span></p><p><span>那么这个科学实在论，用英语表示是 typical realism 或 scientific realism。它是一种 realism，是一种形而下学。它是形而下学，没有反思力，没有反思思维。因为秩序上是一字头，他对于终极秩序、对于世界的背景性秩序——也就是说场域论上是一，缺乏反思。“一”代表一个标准场、场域，一个无所不包的场，日常语言中就是宇宙（universe）。拉康的大学话语（discourse of university）中的 universe 指的就是这个意思。也就是说，在这种理解下，能指的自恋不会感受到能指链有任何问题。“一杠一”的人，首先就是一字头，他对这个根本层面缺乏反思。</span></p><p><span>但是，这里的宇宙是一个科学化的宇宙。为什么呢？因为这个宇宙实际上是一个场，是一个秩序场。这里的秩序是严丝合缝、完美拼合的。主义所主导的秩序就是科学，即数学化的物理学，再由物理学依次上升：物理学、化学、生物学，然后是人类学、社会学、心理学。心理学可能还放在中间，后面的次序就会变得混乱。因为只要你要构造一个科学化的纯宇宙，一旦介入主体性，这个秩序就会断裂——秩序场的融贯性便无法维持。</span></p><p><span>他并没有意识到这一点，而是默认：这个场、这个宇宙里的秩序在每一个点上都是全部秩序、整体秩序，这叫“各向同性”。而且，这个秩序放之四海而皆准。这个宇宙就是一个秩序场。</span></p><p><span>我不知道你们怎么理解“秩序”。就像打篮球时，场上必须遵守各种规则：什么是持球状态，什么是运球状态，怎么投篮，怎么犯规等等。在本体论上，它增加了一个本体论层面——这个本体论就是所谓的实体（entity）。实体不一定是物质，叫 entity，是被装配起来的存在之物。这些存在的东西被组合起来成为存在者。这些存在者是由秩序场中的秩序派生出来的。这些秩序如何产生它们，或者说派生出一些实体、物体。</span></p><p><span>这些实体有哪些？一般科学实在论者会说：电子、光子，高级一些的比如希格斯场、弱相互作用等等。这些场本身不是实体，它们本身也是秩序场。宇宙是各种规范性作用的场叠加在一起的结果。</span></p><p><span>对于普通科学实在论者来说，他们不会深究、不会细究。他们认为一切实体——比如脑子里的各种元素、化学元素、粒子、相互作用、能量——无论是“能量”，还是物质主义意义上的物质（matter），统统都是“华生”，都是“小弟”。小弟是谁的小弟？是科学秩序的小弟。你身上的这些东西，统统都是由这些实体组成的。</span></p><p><span>科学实在论者默认世界上只有一种东西。本体论上只有一种东西，就是由科学秩序派生出来的实体。除此之外，他们不认为有其他存在，或者不评论其存在。他们不承认其他东西是存在的，只把它们视为附着在实体上的偶然属性（attributes）。这些偶性就是 attribute to，即附属于实体的一些属性，是一些零散的规律性。</span></p><p><span>实体当然会有自己的属性。所以如果科学实在论者足够聪明，他会走向经验主义，会区分实体及其偶性或属性。属性本身也会有分类学。但这套分类学如何运作？它不完全服从秩序场的秩序，因为分类学会引入一些时空属性：时间的延续性、空间的广延性，有的甚至是时间或空间上的不连续、离散、不可测。这些性质无法化约为秩序场中的秩序，也无法化约为数理化、符号化的秩序。</span></p><p><span>稍微理解近代、现代科学史运动中的主要争论，而不仅仅是知道结果——科学实在论者大多都是在各工业国的应试教育体系、意识教育体系下培养出来的“一杠一”。他们比较顽固，是意识形态上的保守者。在某种意义上，这些科学实在论的劳动者是异化的：把自己当成物，把人当成物，然后在体系里面为人或事物定价——也就是在秩序场里定价。</span></p><p><span>我曾经去中科院招人，招力学博士。我问一位力学博士：“你知道相对论吗？”他说知道。我又问：“那你知道度规张量（metric tensors）吗？”他不知道。我说：“你怎么可能不知道？”他说：“我们只学经典力学。我们力学就用经典力学模型。”他所用的模型完全不考虑相对论效应，也不考虑高速或高能状况，更不涉及微观量子力学。他只考虑大桥的引力、混凝土的张力之类的问题。</span></p><p><span>我又问：“你对出版或者文化创造有什么希望？”她是个女孩子，她回答：“你给多少钱？”——这表现出她把自己当成一个物。她甚至会认为自己也是教育秩序场——知识、科学、教育的秩序场——的一部分，可以被加载秩序、规律、法则，让人变成有知识的专家。这个专家被教育体系和科学体系装配了数学公式、法则、定理、公理、引理等知识，然后可以无缝衔接到劳动力市场或专家市场中定价：职称、学位、收入、学术地位、商业地位、商业价值等，都有明确规则。他们很少反思（They won’t reflect. Seldom）。</span></p><p><span>这个“1-1”实际上意味着，在这个秩序场以及本体论空间里，没有主体的位置。主体被异化，被当作物，经过有秩序的培养和装配，成为可以在市场上定价的物。这个过程是标准化的。严格说，这不是卢卡奇式的异化，而是物神化——把自己变成 commodity，把自己变成商品。拥有这种意识形态的人过分把自己当成商品。</span></p><p><span>这个商品不一定由金钱定价，也可能由等级制度中的指标定价，比如积分、论文数量等。指标被当作规则，但谁制定这些指标，他们不去思考（They won’t reflect about it）。科学实在论者也不会反思这些指标本身的科学性。</span></p><p><span>他们偶尔会抱怨。这种状态基本是理工科学生的标配。稍微有科学哲学素养的教授，主要是为了学术管理能力的培养。学术机器的运行需要学者具备管理能力，知道如何统筹不同学科：有的做统计、有的做基础理论、有的做实验、有的专门写论文等。学者本人需要科学哲学素养，才能有效协调这些工作。他也了解同行的情况——这是名义上的，我不想多讨论。</span></p><p><span>我要说的是，这种过程的发生其实可以追溯到笛卡尔。笛卡尔会“开灯”，而我会“开盾”。笛卡尔首先把符号化通过点引入——在笛卡尔坐标系中，一开始是一个不确定度数的坐标系——他把点本身抽象出来，把 point 抽象出来，点和这些横线都被抽象化了。</span></p><p><span>在笛卡尔之前的人，比如伽利略，他们的示意图不具有笛卡尔意义上的抽象性。比如伽利略画一个球滚下坡，他只是认为这个坡的画法是一个拟像，是近似的，或者只是理想状况的描绘，用一条线代表一个坡。但在笛卡尔那里，他的抽象使得线条、点、位置、距离、关系——这些定性或定量的元素——不再被看作现实场景的理想化，而被视为数量本身。量本身被表象化。</span></p><p><span>关键问题在于表象化，而不仅仅是抽象。你说抽象化，伽利略画的坡也是抽象化——把某物的特殊属性抽出来。但笛卡尔不仅是抽象，他已经把这些元素转化为数量关系：这些关系可能是正比、反比、一倍、二倍、平方等等。抽象已经完成，但笛卡尔伟大之处在于，他通过坐标系的方法，把已经抽象化的东西在一个均质、符号化的场里——比如平整、纯白的纸张——再进行表象化。</span></p><p><span>首先，他把它画成空间性的长度，一个坐标系，每个点有不同参照，每个参照点有不同结构——这是一个结构主义系统。在这个场域中，数学关系本身获得了最低限度的本体论化：空间化，变成数学结构。斯宾诺莎没有定量，他不把自然界的数量关系看作可以本体论化的。但在笛卡尔这里，数学关系获得了最低限度的本体论化，形成空间模式。这不是几何学，而是一种统计表达方法。</span></p><p><span>笛卡尔的这一做法，使“1-1”最明显的装配活动——把秩序表象化，至少把它固定存在——在一个均质、纯粹、平和均匀的场中实现。这个场就像纸张一样，可以翻来覆去，场本身是各向同性的。</span></p><p><span>这一活动可以看作现代科学的开端。笛卡尔是现代科学的起点。因为从他开始，我们意识到：科学的运行是在一个场里——科学可以在纸张上运行，不需要依赖脑内思维。科学的运算和推理可以在纸张上完成，不需要思想实验，也不需要依靠脑子。纸张成为最基本的计算机——最原始的计算机是代替人脑的。也就是说，笛卡尔已经暗含一个思想：无意识也可以具有知识生产力。</span></p><p><span>越是学科学学得牛逼的人越清楚：当你推导出来的公式你不能理解——意识无法完全把握它——但你知道它是对的、是真的，它在现实中有表象化的、具体的效用。这其中，秩序转化为现实存在的过程，是由无意识掌握的。它不是你意识不理解、不明白，而是一个超越意识的运作机制。</span></p><p><span>在笛卡尔这里，情况表面上看似一目了然，但实际上你可能不理解。这是现代哲学的一个特点：人可以不理解公式，也不理解推导过程，但依然按照规则、按照秩序、按照结构主义符号系统推演——这是一个无意识的结构，具备知识生产能力。</span></p><p><span>这种知识不仅是主观知识。由于知识生产过程由现实的具体本体论自身引导，主体只是中介，并未意识到其作用。主体是多余的，不需要意识。主体只是观看者——笛卡尔式的主体，他在推演数学公式时，并不理解其本体论意义。</span></p><p><span>关键在于：“一杠一”中为什么没有主体位置？为什么可以自由装配，结构化本体？原因在于现代科学的知识生产过程不是由意识驱动，而是由无意识驱动的。</span></p><p><span>这也是为什么弗洛伊德的精神分析在二十世纪初兴起——当时科学革命中出现大量案例：先有假说，而提出者本人可能根本不理解。例如洛伦兹的尺缩效应公式，与爱因斯坦后来写的公式完全一致，但洛伦兹并不理解。爱因斯坦理解公式，也不一定理解其广义意义。黎曼提出黎曼几何学时，也不知其在现实几何中对应的世界特性。他们甚至不清楚自己提出的是知识，或者对知识有所污染。</span></p><p><span>这些知识被生产出来，其有效性中，人类往往不理解、不知晓——它是跳跃的，是发现而非发明。这些规律在被人类发现之前，世界已经在持续生成这些本体性的物质——原子、粒子等。在这一过程中，符号系统不断运转，是无意识的。主体是多余的，对其理解永远不能彻底成为意识。</span></p><p><span>因此，“一杠一”虽然庸俗，但也是必要的。现代科学的发展，或者说它的“做题阶段”，需要积累大量不一致性。用库恩的话说，科学发展包括两个阶段：科学革命和常规科学阶段。常规科学阶段需要大量从业人口进行“一杠一”，消灭自由理性，让系统无意识地运行。运行结果自会被承认，做题阶段会积累大量不一致性和冲突。</span></p><p><span>科学工作者对理论体系产出的定理、定律的意义——在本体论上、宇宙发生学上，或意识性机制上——基本不反思。现代科学的知识生产主要依赖无意识。</span></p><p><span>这些“一杠一”的人可视为知识生产中的“奴”，他们生产知识，但知识的所有权由天才掌握——科学革命阶段的天才。就像古代亚里士多德时期的奴隶主认为自己有知识，其实大量知识是由“一杠一”的劳动者生产的。那时的一杠一可能是信仰神话，通过无脑遵循规则、推导秩序，产生不一致性，再去探讨真理。</span></p><p><span>所以，科学实在论者实际上是值得争取的。他们因“一杠一”，主体性被压抑，或将自己视为知识生产体系中的可定价劳动力。这是一种人为刀俎，我为鱼肉的状态，也相当可怜。大科学家不可能是“一杠一”，他们是“二字头”，在知识生产体系中处于 master-slave 的位置——局部统治者的地位，只不过局域化于知识生产领域。</span></p><p><span>我其实很纳闷：人类都已经进入二十一世纪了，但在知识生产体系中，竟然仍然存在一种“奴隶制”。你可能会觉得：“哦，那只是一份工作啊。”于是你说：“让天才去发现真理好了，普通人只要做题阶段，积累不一致性就可以了。”Whatever。可你的人生只有一次，你这一辈子甘愿做一个“一杠一”？生命只有一次，如果甘愿当螺丝钉去玩，那就算了，我不多说。</span></p><p><span>对于整个体系，我不打算多评论，我只想说明：为什么会有“一杠一”？这是从笛卡尔开始的——无意识的主体具有生产力，无意识的符号系统具有知识生产能力。现代科学的起点是笛卡尔。更确切地说，是笛卡尔把数量关系、数学关系进行了最低限度的本体论化——在纸张上形成一个信号系统，一个场，一个稳固的符号系统和适应性场。这与我们在“三杠四”中对符号学的理解是一致的。这个结论也是拉康指出的：这些点（point）、这些线、这些指针，为科学革命和现代科学的蓬勃发展提供了最后的发觉准备。</span></p><p><span>坐标系的意义其实更为深远。那就讲到这里。</span></p></div></div>
+</body>
+</html>
