@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>1113科学消费主义</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>我们今天要讲的是“主义主义”的1-1-1-3。它的代表人物与罗素的社会影响有关。罗素的社会影响，开启了一种意识形态——我们称之为“科学消费主义”，也就是科学的消费主义（Scientific Consumerism）。至于“消费主义”，这个词已经很常见，就不多解释了。</span></p><p><span>那么，科学消费主义，我们可以引用拉康的一句话。我不知道确切时间——这也是我昨天讲的那本书《享乐的劳动》（The Labor of Enjoyment）里卷首语提到的：“不知道在何时，在主人话语中，有某些变化发生了。”这些变化可能源于马丁·路德，或者加尔文的新教运动；也可能是热那亚船舶航行中的某些事情；也可能与资本主义的兴起有关。总之，在某个时候，人类的主人话语中发生了变化，出现了一种让快乐可以被计量的机制——剩余快感可以积累，享乐可以计数。</span></p><p><span>在享乐可以计数的情况下，资本主义便出现了。资本增值、资本操作，都是围绕这个变化展开的。本质上，所有话语都是享乐的话语。</span></p><p><span>如果你想更深入理解，可以看看我提到的《享乐的劳动》。那么，科学消费主义和这些理论有什么关系呢？很明显，科学消费主义承载了这一主人话语，它表现为一种大学话语。这种大学话语，标准地“服从”主人话语——就像“舔他的皮鞋”。</span></p><p><span>科学消费主义的核心意涵是：人类的快乐可以计数。换句话说，世界的目的论——这个“目的论”里的‘3’——就是人类享乐，或者说人类幸福，不仅可以增加，还可以积累。世界的目标，是让人类幸福能够被积累和计算。</span></p><p><span>这和亚当·斯密、边沁等经典经济学家的理念相呼应。当然，到了边沁那里，就演变成极端的个人主义享乐主义。</span></p><p><span>我想强调的是，他们考量一个社会文明程度的标准，是根据总体幸福度来衡量的。我自己也玩过一个叫《文明》的游戏——应该是席德·梅尔的《文明五》《文明六》。游戏里，每个城市的地块是六边形的，有文化影响，会给城市提供“笑脸”。这些笑脸来自环境整洁、食物充足、和平等。笑脸越多，代表城市越文明、越发达、越好。</span></p><p><span>这些理论你可以去看我讲的那本书《享乐的劳动》。那这段话和科学消费主义有什么关系呢？很明显，科学消费主义就是承载这一主人话语的一种大学话语。这种大学话语，标准地“服从”主人话语——就像“舔他的皮鞋”，当然，你们可能不太懂“皮鞋养什么”。</span></p><p><span>科学消费主义的核心含义是：人类的快乐可以被计数。或者说，世界的目的——目的论中的“三”——就是人类的享乐，或者说人类幸福，不仅可以增加，还可以积累。世界的意义就在于积累人类幸福，而且这种幸福是可以计量的。就像亚当·斯密、边沁等经典经济学家提出的理念。当然，到边沁这里，它就演变成极端个人主义的享乐主义了。</span></p><p><span>所以，科学消费主义的目的论在于：它认为世界存在的意义——不仅是物理学意义上的世界，也不仅是人类历史，而是整个世界史、宇宙史、整个本体论的发生与发展——就在于一种理智的、自认为有意识、可以反思、创造文化、感受痛苦、能说话的生命体的幸福增长。而且，这种增长是可以积累的。不能积累，就谈不上增长。</span></p><p><span>换句话说，宇宙本身变成一个场域，一个可以计量人类幸福总量的池子，就像奖金池一样。科学家为人类创造粮食、医药等贡献——意识形态认为，他们的意义就在于改善人类生存，或者让这个宇宙朝向极乐之地发展。快乐越来越多，娱乐、愉悦不断增长。</span></p><p><span>这种运动的增长和叠加——在目的论上——一开始是无脑循环（1-1-1），然后逐渐上升（1-1-2）。世界越来越高级，机制越来越神秘、有活力、有层次。从无机到有机，有机到有生命，有生命到有意识，有意识到科学意识，再从科学意识发展出更高级的能力。这两种目的论——即循环性与上升性——通过这种增值活动、积累、叠加被调和。</span></p><p><span>简单来说，从无脑增值的角度，它是循环性的；从叠加、越来越高效、享乐频次和深度越来越高的角度，它是上升性的。这就是科学消费主义。</span></p><p><span>在场域论上，他认为这个世界——这个“1”，宇宙——是用来积累快乐、积累幸福总量的场域。快乐、享乐、幸福都可以被计量，可以有数字化、量化的表示。这个量化的东西存在于宇宙这个场里。这个宇宙场，不仅是物理法则的场，更是一个享乐之城，或者更准确地说，是一个享乐市场。</span></p><p><span>有句话我印象很深刻。比如，美国有一些民族主义者曾说：“如果全世界的人都像美国人一样消费蛋白质——吃肉、蛋、奶——地球的能源根本支撑不了。养一吨牛肉，需要十几到二十吨饲料，这样的资源消耗地球承受不了。”所以，美国人半开玩笑地说：“不能让中国人也这样吃肉。”</span></p><p><span>美国的意识形态背后，其实就是这种1-1-1-3逻辑——只是没有放在全人类层面去考虑。但它也反映了一个问题：如果整个世界的人都彻底享乐，地球资源就不够了。这种意识形态看似“公平、中立、普世”，实际上意味着背后的分配逻辑：谁掌握科学话语权、谁的生产力更高，谁就可以更尽情地享乐。</span></p><p><span>这让整个世界的合法性——比如美国的合法性——建立在它能让底层老百姓享乐、吃蛋白质、吃肉蛋奶上。人民越爽、消费越多，这个体系的合法性就越强。这种意识形态核心，就是保证吃饱喝足、爽够。这，就是世界的意义、人生的意义、生存的意义。</span></p><p><span>背后有科学话语和宇宙支撑，是科学主义或物质主义意识形态提供了理论支撑。其特异性在于：人类与事务、或人类与动物——尤其是可屠宰食用的动物——的界限在哪里？人的享乐有价值，可以叠加、可以积累。积累越多，人们就越可能支持政策制定者或特定的政治力量。</span></p><p><span>而动物的享乐没有价值，动物的痛苦可以被忽略。只要动物的痛苦能支撑人类的享乐，它就应该被允许。这种意识形态本质上服务于政治支持度，会导致政治极化、决策短视，把大多数人口当作“猪来养”，但同时让他们享受“奶头乐”。所以，它是标准的“奶头乐意识形态”。</span></p><p><span>高级人口的享乐则不同。他们的享乐是越少越精、越有创伤性，甚至通过压抑本身来制造快感。</span></p><p><span>从目的论角度看，它把整个宇宙，或者至少整个社会和人类历史，都理解为一个衡量历史价值的场域：人民有没有享乐、爽到。比如汉文帝、汉景帝的“休养生息”是有意义的，因为人民享乐；而汉武帝即便推动了民族融合、文化交流、政治思考、理论发展（比如董仲舒），从这种逻辑看却没有意义，因为历史的价值在于享乐的积累。</span></p><p><span>在社会层面，什么样的社会是有意义的？美国，或者西欧、北欧，特别是那些人人都能充分享乐、生活充盈的地方——大家都想去、都往那跑的世界——是有价值的。</span></p><p><span>我跟你讲，这背后实际上把宇宙看作一个享乐积累场、快乐幸福的积累场。这背后是一种彻底的资本主义意识形态，标准的资本主义，而且也是大学话语的化身——表现为科学话语的一种主人话语。它找到1-1-1里的“3”，把自己循环起来，把资本主义化，为资本主义的增值提供科学辩护。</span></p><p><span>能够让这种“奶头乐”最彻底的方式，就是把它铺开——市场机制来实现：降低价格，让消费通过分工、通过“看不见的手”、通过垄断、通过提高效率，以及通过定向培养新自由主义的产业后备军，压低被雇佣者的价格。这背后是一整套配套机制。</span></p><p><span>在本体论上，这也是“1”——就是物质。当然是物质。但这里的“物质”，你要理解为那种“太物质了”的物质。在庸俗的、普通人的享乐主义意识形态里，“物质”就是享乐工具：金钱、名车、名表、美女、帅哥、化妆品、高级场所入场券、名酒、鱼子酱……太物质了。</span></p><p><span>在这种意识形态里，物质就是享乐对象、享乐用具。过度关注这些享乐用具，就会把世界，特别是世界的原材料，看成享乐的工具。</span></p><p><span>所以在本体论上，这种意识形态的视角非常狭隘。它把整个宇宙的终极目的看作享乐的叠加、积累和增值，自然而然地把世界上的物质看作：“这不就是我的享乐工具吗？”人降生在这个世界上，就是为了享乐：身体是用来爽的，钱是用来花、用来开心的。钱可以换成各种名车、名表、名牌、名包。这些物质，本体论上，是由科学话语支撑的。</span></p><p><span>凡是由科学秩序主导的物质，都可以用来满足享乐。比如一些化工产品——虽然属于纯大学话语、纯物理学秩序统治下的东西——你一看就知道：“这个用来生产爱马仕包的胶水”，“这个用来做iPhone玻璃”。瞬间，它们被定位到享乐消费主义的秩序里。科学、工业和消费市场的链条就打通了。</span></p><p><span>在这个意识形态里，最终导向的目的论和前面讲的一样。你可以在场域论——也叫常用论——里理解生产计划和整个秩序；而本体论，就是原材料。</span></p><p><span>在认识论上，这个“1”指的是我之前说的：从科学话语，到工业话语，再到市场话语，最终到消费体验。他认为，整个世界不就是这条链条吗？</span></p><p><span>自然界被科学透视、被工业加工，变成产品进入市场，最后由我去消费体验。我自己也是人，也是市场的一部分。人也是一样：人由自然派生出的血肉组成，人际关系包括亲缘、亲族；然后通过科学教育、技能培训、职场参与，最终进入职场市场，最后完成消费体验。人也是消费体验、享乐体验的一部分。</span></p><p><span>重点来了：人在这里并不是享乐的主体。NO！人只是享乐发生的条件之一。理解了吗？在这种享乐主义、消费主义逻辑里，人是异化的，至少是物化的、工具化的、材料化的。他和你喝的那杯 dry martini、抽的那根雪茄，和你的神经系统、生理状况、身体，都是一体的。</span></p><p><span>那么最后谁在享乐呢？既然人只是享乐的对象之一、也是生产快乐的机制之一，实际上是在宇宙在享乐。宇宙本身在享乐。宇宙看到他的子民——就像玩《文明》游戏一样，看到每个小人挂出笑脸、城市挂出笑脸，玩家就开心了。宇宙本身，就是这个大他者，在享乐。</span></p><p><span>在科学消费主义里，不只是人在消费，人本身也是被消费的对象，或者至少是使得消费和快乐生产出来的原材料之一。人要不停地生产欲望，同时负责那“刀锋般”的切中瞬间——爽的那一瞬间。</span></p><p><span>而在享乐时，人也必须忠诚地体验它，就像科学家忠诚面对实验瞬间一样。吃什么可以延长几秒快乐，喝什么让你迷醉……无论如何，人的享乐本身也是被约束的。</span></p><p><span>之所以称之为“科学消费主义”，是因为在消费、享乐时，已经有大学话语——也就是1-1-1——告诉你如何去消费、如何去享乐。你的消费行为必须忠于这个大他者、这个宇宙，让宇宙的整体幸福最大化。</span></p><p><span>举个例子：花1000块买鱼子酱，你得讲究吃法，配哪种饼干……看起来像布尔乔亚的脑残审美，但这是有作用的。这种自欺欺人意味着：“我要用最科学、最高效的方法享受美味。我没有浪费。人类总要吃鱼子酱，不是你吃就是我吃。现在轮到我吃，我要最大限度让快乐增加。我爽到，其实并不重要，重要的是整个人类的快乐增加，整个共同体的文明提升。”</span></p><p><span>这是一种标准意识形态，为布尔乔亚的垄断和集中做辩护。它制造的这种积累恰恰是不均匀的，永远是失衡的。</span></p><p><span>而且你要明白，爱欲是不能这样叠加的。根本没有一个场，也没有一个大他者在给你记账：“哎，你今天快乐一秒钟，第二天快乐3.5分钟，第三天两小时打游戏……”没有人会帮你算。更重要的是，快乐本身不是可以计量的东西。它是一种精神解放的状态——不受任何符号系统评价的状态。</span></p><p><span>真正的灵魂解放，是你本真的、内在结构的彰显，是显露自我、成为自己的过程，是存在和生存的过程。它可能伴随痛苦。对凡俗评价来说，它可能是痛苦，但它本身是释放的。有时候，痛苦比肤浅的享乐更有价值，那种人生更值得过，因为你忠诚于自己真正的本体论天命。</span></p><p><span>简单来说，我用稍高一点的布尔乔亚异形态来打这个低级异形态。这个意识形态很 low，但它却大行其道。</span></p><p><span>那么，为什么那些有钱人在享乐时还要拘谨？为什么很多稍有钱的人，享乐仍然压抑？压抑在哪里？为什么压抑？因为1-1-1-3——这个享乐归根结底不是人在享乐，而是宇宙在享乐，是科学体系、秩序场在享乐。</span></p><p><span>它预设了：这是为资产阶级的享乐、或者剩余价值积累做辩护的。当社会快乐通过货币积攒到他们手上时，他们就会打着旗号：“我是为整个人类的幸福总量努力。”因此，他们在享乐时，也会感到压抑。这就是“天道好轮回”。</span></p><p><span>因为当你夺取或榨取这些剩余价值时，你会心里想：“我是在让所有人都总体上更爽，让世界的快乐总额最大化。”你不要以为他们不信这个话。意识结构本身是被语言建构的。他们的语言和底层意识结构已经被这个逻辑同化了。</span></p><p><span>就算他心里说：“我其实是在骗他们，我要变成我自己的东西。”可此时，“你自己”的概念也已经被前面的话语替代了。资产阶级的自我认同已经被意识形态殖民了。</span></p><p><span>所以即使他拿到大量资源、很多钱去享乐，这种享乐永远是被规制、被制约的。他会有负罪感。负罪感不是因为对不起贫苦的人，不是因为通过市场资本主义把资源积累到自己手里。而是因为他在想：“哎，我有没有实现享乐的最大化？”</span></p><p><span>他真的相信享乐是可以积攒、可以最大化的，却没有意识到：享乐本身是一种开放的姿态，是创伤性的敞开，是对错误意识形态的颠覆、解脱和挣脱。</span></p><p><span>他没有意识到这一点。即便不相信“我在为众人积累快乐，让整体快乐提高”，他把这看作幌子，但仍然坚信：快乐是可积攒的。在这种信念下，布尔乔亚的所有享乐都是压抑的，都被规训了，都被“享乐可被积累”这一信条束缚着。</span></p><p><span>因为布尔乔亚秩序、社会秩序的基础，不是“我要让所有人总体快乐增加”，而是“享乐可以积累、可以量化、幸福可以量化”。很多布尔乔亚真的相信这一点。</span></p><p><span>但这也是19世纪的事情了。到了20世纪的布尔乔亚，他基本上都明白：享乐是创伤性的、创造性的。现代——尤其是后来的那些——才明白：它是无法被积累的。它不能被记载，不能被政治化，不能被“增值”，根本无法被积累。</span></p><p><span>好吧，我讲了这么多，希望大家能好好反思一下。这是一个现代意识形态的问题。什么国民幸福指数、总量啊，whatever。幸福本身不是可以量化的。但在统计维度上，有些事情是可以量化的，比如孕妇分娩死亡率、先天遗传病被及时发现和治疗……</span></p><p><span>但是我要说，在这种情况下，并不是享乐被积累了，而是痛苦被避免了——一些无意义、虚妄或过多的痛苦被避免了。</span></p><p><span>所以，与其用“积累快乐”“人类快乐总量”来为布尔乔亚意识形态辩护，不如反过来想：我们需要一个社会公共服务体系，它至少能够规避那些荒谬的、容易发生却破坏巨大的不幸。比如小儿麻痹症，或者古代的牛痘。这些才是文明的进步。</span></p><p><span>我认为，这些才代表文明：克服无意义的创伤和损失，避免不必要的痛苦。这才是衡量文明的标志，而不是去算什么“人类幸福总量”，却对底层或弱势群体的苦难视而不见。哪怕社会总体幸福度再高，在我看来，这种社会依然是野蛮的。</span></p><p><span>举个例子，比如英国——我记得2019、2020年，寒潮竟然能冻死人，一两千号底层家庭交不起暖气费。国家的文明程度，不仅仅看总体幸福总量，而是看有没有兜底机制：能否保证国民不会因为一些小创伤或小灾害而遭受巨大痛苦。</span></p><p><span>这种“底线”的制度很重要——不要因为小事，比如伤风感冒、轻微疾病就让人掉入深渊。对于国家而言，这些小事可能是局部的，但对于个人来说，却可能毁掉整个生活。比如早期癌症或病变，及时用特效药治疗，花费几千、几万、甚至十几二十万，但只要医保覆盖，几乎所有人都能得到救治，这就规避了巨大的痛苦。</span></p><p><span>这样的体系，我认为才代表文明。它不是说“你要比别人高”——而是保障最基本的生活安全。这个“兜底”的机制确保人们不会因为荒谬的小事而跌入深渊，生活不会变得极端痛苦或凄惨。</span></p><p><span>我把这种理念称为“底线的比例原则”，我觉得这是我们需要提倡的。</span></p><p><span>好了，就讲到这里。</span></p></div></div>
+</body>
+</html>
