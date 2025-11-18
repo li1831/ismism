@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>1121科学知识社会学</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>我们现在要讲的是&quot;主义主义&quot;中的1-1-2-1，也就是科学知识社会学。它的代表人物不是一个具体的人，而是一个学派——爱丁堡学派，也被称为&quot;新科学社会学学派&quot;，英文是New Sociology of Scientific Knowledge。</span></p><p><span>科学社会学最初是由默顿建立的。在默顿那里，科学社会学仅仅是研究科学中的社会因素，把科学共同体当作一个社会团体、宗教或社会运动来研究其内部的社会学因素。这就是默顿学派，也称传统科学社会学学派。但爱丁堡学派比默顿走得更远、更激进。</span></p><p><span>因为在默顿那里，科学仍然被当作&quot;老爷&quot;供着，研究的只是老爷府里的陈设装饰、品味格调——比如哪些公爵伯爵、子爵男爵在皇家学会里，有哪些刊物、研讨班、读书会、沙龙、实验、公众演讲，以及政府资助等等。这些研究充其量只是表面功夫，就好像在研究将军府里的仆役杂役、文书长史。但爱丁堡学派不一样，它直接研究社会话语、科学话语，甚至研究科学知识本身的社会建构性。</span></p><p><span>爱丁堡学派突破了这个限制。他们不仅仅将社会学的分析力度渗透到科学的学科建制，更深入到了&quot;老爷&quot;本身——也就是科学知识本身。他们不是讨论老爷住的屋子，而是直接讨论老爷本人。他们研究科学知识本身的社会性、建构性，认为科学知识本身就是&quot;屁股歪&quot;的，而不仅仅是科学作为一个建制、机构或社会机构的一部分。科学是一种社会话语生产机构，是社会生产结构的调整结构、引导机构，是整个社会意见场合和决策场的参谋机构、信仰机构、权威机构。无论如何，科学是个社会机构。但爱丁堡学派不讨论它的机构性，就好像大将军开府之后，不再讨论府邸本身，而是直接研究大将军的部队。</span></p><p><span>他们研究大将军部队里的每一个士兵——这些士兵可能是良家子，也可能是渔民、山民，或者是招安的土匪。他们不再仅仅研究府里的仆役杂役，那些只是外在的框架和表象。他们研究大将军家里的每一个家丁、家臣、私兵、军师参谋、小将军、武长，以及大将军使用的器械和战法，研究这些具体的东西。因此，爱丁堡学派实际上让物理主义者和科学独断论者非常不爽。这个东西叫SSK——Sociology of Scientific Knowledge，即科学知识社会学。它是对科学知识&quot;玩真的&quot;，而不仅仅是对科学的社会建制进行研究。</span></p><p><span>如果只是sociology of science，这个science还仅仅是被作为一种社会机构（institution）来研究。你懂吗？举个例子，比如有个sociology of religion，一个真正信仰宗教的人看到这个，会呵呵一笑，觉得没有戳到自己的痛处。但如果你搞一个sociology of religious metaphysics，即对宗教性形而上学的社会学研究，那他就跳脚了。因为这触及到了宗教生产出来的metaphysics——里面的理念等级制、整个形而上学大厦的发生学机制、各种本体论假设、主体性、灵魂的假设、价值、底层博弈的机制。这些东西就是他的命根子，戳到痛处了。你社会学凭什么研究我这个东西？</span></p><p><span>同样的，面对knowledge，也就是科学，科学共同体认为他们自己就可以研究what is knowledge，可以定义什么是合法的知识，他们自己说了算。但SSK说：&quot;放屁！我说了算！&quot;</span></p><p><span>我要把你设立知识合法性时那个&quot;歪屁股&quot;给你戳穿。所以科学共同体很不爽，非常不爽。因此，从认识论上看，这个科学知识社会学，应该写成&quot;学科间关系vs学科内关系&quot;。爱丁堡学派的学社会学之所以具有科学性，在于它有两个层面，或者说两个维度。</span></p><p><span>或者说是研究建制间的关系，研究不同机构间的关系。因为社会学研究的是社会机构（Institution），科学是社会中的一个机构。你不能说它是国家机构，但它是一个社会机构。比如一个国家有一亿人口，其中有五百万科学共同体成员，这个共同体就是一个机构，它生产社会话语、生产知识话语。它产生的科学话语可以进一步变成技术，变成社会共同理性的权威，作为意识形态调和的大学话语，它可以作为中枢，也可以被权威化，从而形成一个技术至上或科学至上的国家。这就是科学作为一个社会机构的运作方式。</span></p><p><span>SSK在认识论上分裂成两个层面：一个是机构间关系，我称之为宏观层面；另一个是微观测，即研究学科内部——其实就是研究科学本身的&quot;屁股歪&quot;，它的倾向性，以及它的知识发生学。</span></p><p><span>这些知识发生学都涉及具体的知识形态：文化和符号支持、合法化、共同体内的传播等等。你们可以去看他们的论文，研究的东西很多。比如知识在共同体内如何传播，如何对外部产生影响；在共同体内如何被合法化，然后如何传播出去，如何渗透到外部世界，如何准备好它的外部形象，把知识包装好、装点好。这里有很多进科普的隐喻性工作，就是要把这些知识装点得很漂亮。</span></p><p><span>举个例子，比如希格斯粒子。当希格斯场被证明存在的时候，它首先已经在共同体内合法化了。然后得了诺贝尔奖，就进一步传播，不再局限于小圈子，而是做一个面向大众的模型传播。然后再打包起来，用各种隐喻来包装——它就像个帽子，或者别的什么。还要把它和对称性破缺、自反性结合起来讲，用一些逻辑修辞。这时你会看到科学内部有很多有意思的东西，这个知识就发生了，不仅仅作为内部知识，也准备好了外部化。</span></p><p><span>这些东西在过程当中都有各种倾向：修辞性倾向、文学性倾向、社会性群像、心理学理性倾向、个人利益偏好倾向、&quot;屁股歪&quot;的意识形态。这就是学科内知识发生的内容倾向的微观分析，它本身具有很强的社会学批判力。</span></p><p><span>微观层面更具社会学批判力，而在宏观层面则更具&quot;科学&quot;的调调。这个学科叫科学知识社会学，它在进行社会学研究时，虽然批判科学知识，自称超越、绝对客观中立，但在批判过程中，它慢慢形成了自己的学术话语，自己也科学化了，也建构了自己的学科建制。这就要在宏观层面&quot;下大棋&quot;——科学是一种社会机构。</span></p><p><span>它和金融界、产业界有什么关系？比如理论物理和金融界，力学研究和工业界，材料学研究、生化研究和医疗产业，心理学研究和卫生部门、社会治理部门等等。这不仅仅是研究科学如何为生产理论提供采购的理论，还要研究科学反过来如何影响这些共同体，这些人会被怎么影响，科学话语本身会受到什么影响。通过这种&quot;下大棋&quot;的方式告诉你：科学不是铁板一块，不要把科学想成铁板一块。即使在最底层的逻辑学、数学层面，也要研究科学内在不同学科之间的关系。所以SSK是有帮助的，特别是巴黎学派，能帮你突破科学独断论的物理主义。</span></p><p><span>但是它本质上自己也是个意识形态，特点就是喜欢&quot;下学科大棋&quot;。之所以如此，是因为它认为学科里面没有一个学科真正道出了真理，没有一个学科具有归根结底的渗透力。在这种情况下，谁掌握了元语言，谁就是那个飘在空中描述下面棋子如何蹦跶的棋手，而你们都是棋盘上的棋子。它认为自己掌握了这种元语言。</span></p><p><span>在常议论上，它仍然是一级；在本体论上，也一样。本体论上它还是个基础主义、物理主义。他认为世界本身如果真的到本体论层面，或者知识背后有什么，那还是让科学说话。因为他们认为这些人统统都是经验主义模型或实证主义模型，脑子里还是经验实证主义，觉得表象背后就是那些物理实在，那些基础的、硬的东西。</span></p><p><span>但他认为这些硬的东西不能由你科学话语直接说了算。正因为在本体论上相信有硬的东西，所以在认识论上他分强弱两个版本。强版本认为科学知识归根结底，没有一个逃得过社会建构，全都消解掉，都是屁股歪的建构。弱版本则认为，科学话语是可以的，科学知识社会学对科学话语合法性或客观性的消解是有限的。</span></p><p><span>弱版本是说你不能保证自己是善的，科学无法自我证明，我们无法证伪它，但社会话语只是这样一种姿态。强版本则说你注定不是善的，科学注定无法保证自己。弱的姿态对应宏观层面，强的姿态对应微观层面。微观层面要把老底都掀出来，这会得罪人，得罪海了去了。做微观研究，社会学要做实证研究，你得罪一票人。比如专门搞医药学的科学知识社会学研究，你真敢把论文做出来，别说发表论文了，你的教授头衔都可能危险，你导师的头衔都有问题。真的做这种东西，太得罪人了。所以很多人往往选择做宏观，选择&quot;下大棋&quot;。</span></p><p><span>知道我们其他的经济部门、法律部门、道德部门、伦理部门都会对科学产生一定影响，会让科学&quot;失真&quot;。也就是说，科学本来可真，但会失真。只要我们通过社会学的宏观机制，找到失真的主要脉络并去除，让科学保有一定的自治性，它还是能生产合法的知识的。</span></p><p><span>但这二阶话语就是大学话语的循环，是二阶自循环。这意味着社会学和科学之间相辅相成，绕来绕去。在认识论上进行二阶循环：我帮你挑错，帮你拦着恶势力不侵害你，但你本身有点小问题。你得自己反省，贼在你科学家心中，是你科学家最底层的内在意识和私心。有好的科学家值得钦佩，也有坏的自私的科学家。但这不是科学问题，而是人的问题，是意识、精神、信仰的问题。</span></p><p><span>社会学家可以帮你把关，所以你们要花钱买社会学家的书，养着这些社会学家，学术共同体少了我们不行。这有点搞笑。我不喜欢这个东西，因为它没有本体论反思能力，一天到晚只在认识论上打转。本体论上，它完全接受现代科学的那个反思，没什么好反思的，太弱小了。它是墙头草，随风倒，自己也搞两套：强纲领和弱纲领。</span></p><p><span>这种二阶话语就是义正词严的大学话语，有自反性。它羡慕科学共同体掌握了学术权威，自己就寄生在这个权威上，或者把权威拿过来，或者在势头不好的时候再把权威还回去，不停地荡来荡去。搞这种东西的人，我觉得算了吧。</span></p><p><span>但如果说你走得更远，辩证法坚持到底，或者自己建构符号学话语，从底层开始本体论化，探讨所有现象、表象、意识内容、精神结构、社会运动、历史性运动，把所有存在者整体都符号学化、文化化，用符号学的方式去做科学知识社会学，那你就能突破二阶。</span></p><p><span>用符号学、后结构主义的方式去做，穿透到底层，突破二阶，把本体论图式穿到底。上面常议论也肯定能穿破，因为科学话语要从一而终，一旦本体论穿破，上面也很快会穿破。现代人如果主体是理性的，到三字头里面就会转起来，成为一个结构主义者，或者像列维纳斯那样的人类学社会学，用人类学社会学来考量作为神话的科学话语，考察它的神话性发生学机制。你要面对这些东西，那就高级了，不是一般地可以搞了。</span></p><p><span>但偶尔有些社会学家如果抵达了这个水准，那就不在我的批判范围之内了。我不是一竿子全部打死。因为有些社会学家是封闭的，所谓的蛇皮社会学家，想要干科学但干到一半自己就怂了。强纲领提出来却坚持不到底，穿不到本体论，更穿不到背后那个根本性秩序的投射、信仰层面去。那就不是一路人。</span></p><p><span>你要是骂周仓，这算什么？人家好歹也是关羽的部将啊。那就先讲到这边。</span></p></div></div>
+</body>
+</html>
