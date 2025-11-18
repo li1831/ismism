@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>1114宇宙悲观主义</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>我们今天要讲的“主义主义”中的 </span><strong><span>1-1-1-4</span></strong><span>，它的代表人物往往是小说家，尤其是科幻小说家。这个意识形态叫 </span><strong><span>cosmicism</span></strong><span>，由写克苏鲁的洛夫克拉夫特提出。我把它翻译成 </span><strong><span>“宇宙悲观主义”</span></strong><span>，因为只说“宇宙主义”不足以表达它的深意。</span></p><p><span>所谓宇宙悲观主义，就是认为人类面对的是一个冷冰冰的宇宙——在目的论上完全不以人类为中心，不像 1-1-1-3 那样把人类的幸福、增值、积累当作整个体系的目的。</span></p><p><span>在科幻小说里，比如刘慈欣，基本也都是这个路数。这类作品通常是用来“吓人”的，用来进行一种去目的论的呈现，把世界的存在变成虚无主义，或者一种生存的失败主义。</span></p><p><span>它的代表性意象就是“二向箔”——一种降维打击。但说实话，这玩意儿本质上很无聊，因为它的核心就是文明能级的比拼：谁掌握行星能量、恒星能量、银河系能量。说白了，不过是近代以来那些比较挫、比较无脑的科幻小说最喜欢玩的东西。</span></p><p><span>这就像一个刚学会数数的小朋友，彼此比拼谁能数到更大的数：“我有一亿”“我有十的二十次方”。背后隐含着这样一种意识形态：人类文明再怎么发展，在能级上也只是“加了个零”。总有一个宇宙级的力量再往后加个零就把你灭掉了。</span></p><p><span>这荒谬、也很蠢：无论你发展到多高的文明度，总可以设定一个更高能级的来把你干掉。背后是一种受害妄想症：他们感受到了物理秩序的“自行其事”，不照顾任何中心化利益，感受到符号系统的自主性，但却用一种反人类中心主义的方式来感受它。</span></p><p><span>而这些人没有意识到 </span><strong><span>“有限性”（finiteness）</span></strong><span> 的概念。存在的意义就在于有限性，就在于“窗口期”。我说的“窗口期”，不是刘慈欣《三体》最后搞的那个小宇宙，而是指 </span><strong><span>有第一人称意识的生存主体性</span></strong><span>：它的表达体系、它的历史叙述要有意义。</span></p><p><span>而意义必须落在一个差异性的符号系统里。这个系统要相对稳定地维持差异，它就必然会设立自己的边界——包括认识论边界：“我不表达你了，你比我更高的东西，对我来说就不存在。”</span></p><p><span>举个例子：如果一场超强太阳风暴在瞬间毁灭了人类文明，整个人类叙事都被抹掉了，那么符号系统也随之消散，差异系统被摧毁。在这种条件下，后面那些“悲凉凄惨”的结局根本不会被符号化，它没有意义，没有叙事框架，也没有见证者——而悲剧的悲剧性就在于 </span><strong><span>无人见证</span></strong><span>。</span></p><p><span>所以你说那里有痛苦、有希望，全都没有意义。</span></p><p><span>因此我们说，宇宙悲观主义的这些人，把宇宙看成一个“能级比拼场”：能级越大越厉害，高能级干死低能级。可这种能级竞技场式的宇宙观，本身就非常不文明。</span></p><p><span>更关键的是：</span><strong><span>这个斗兽场是怎么来的？</span></strong>
+<span> 它的符号化、它的涌现，不需要本体论支撑吗？</span>
+<span> 这个场域的显现必须经过主体的中介——我们的意识体验——它才成为可能。</span></p><p><span>这就是“幸存者原则”：因为我们体验到了世界的存在，所以我们才能回过头把宇宙理解为一个有能级梯度的场所。</span></p><p><span>但 1-1-1-4 却坚持认为宇宙是一个能级比拼场，而且能级可以无限扩张。对我们人类来说，我们的智慧、有生老病死、爱恨情仇，能控制的能级就那么点：发发电、烧烧火、玩玩电子游戏，顶多搞个核弹。</span></p><p><span>我们会觉得，在宇宙的法则里，没有任何法则为我们这些渺小的有限主体“撑腰”。没有任何法则为我们在用意识体验让这个场域上演历史时提供保障。我们作为中介、作为观众、作为体验者，就是剧场里的小人物。</span></p><p><span>而这个剧场要上演更高级的东西，就会无情地把我们抛弃、干掉，然后更高级的再被更更高级的干掉。整个结构里没有任何力量会去约束能级的无限上拉。</span></p><p><span>这种意识形态认为：能够约束毁灭性力量的，不就是更强、更“吊”的力量吗？但既然可以约束，那当然也可以毁灭。于是他们不断设定一种无限增长的力量——原本在 1-1-1-3 里属于幸福的增长，现在却变成恐惧的无限增长、被害妄想症的无限增长、绝望的无限增长。</span></p><p><span>他们总觉得：人类掌握了反物质，还有更强的文明能直接操控空间维度，还有更恐怖的文明能操控宇宙叙事学的维度。但他们完全没意识到，这些力量根本不是同质的。他们最大的问题，就是把所有互相制约的力量都设想成同一种东西，只不过有些更强，有些更弱。</span></p><p><span>在他们的本体论里，这些力量的本质都是“能量”，都是“能级”。让场域中事物的性质发生变化的力量，就是“话语权”。如果把宇宙看成一个符号系统，那么在一个局部空间里，有没有更高能级，就成了话语权的争夺。于是，在物理主义框架下，宇宙整个变成一个符号系统：谁的智慧更强、能级更高，谁就拥有话语权。</span></p><p><span>弱相互作用力、强相互作用力、电磁力，在他们那里都被看成秩序强弱的问题——能级高的就胜出，能级低的就被干掉。整个宇宙被想象成一盘斗兽棋。</span></p><p><span>我真觉得这种思路非常愚蠢——因为这些力量不仅不是同质的，而且在结构形式上是互相制约的。他们却以为决定这些现象的，只是秩序强弱、只是数学参数上“多一个零少一个零”的问题。说穿了，就是“123456789十，无限延续”的算法逻辑。所以他们相信可以重新定义整个空间场域。</span></p><p><span>这种本体论，说白了，就是物理主义者或科学实在论者的幻觉：幻想不同的物理秩序、科学秩序之间存在“话语权的强弱”。</span></p><p><span>这种意识形态的底层，是一种数学精神——用康德的话说，是“数学上的崇高”。通过量的无限堆叠，超出界限，然后滑向宇宙悲观主义。无论人类文明多强大，只要宇宙在后面再加一个能级，就能把我们干掉。</span></p><p><span>这真的非常无聊。</span></p><p><span>他们感受到了符号系统的自主性，却没有意识到：当我们幻想一个系统——比如人类世界是 10 的 1000 次方复杂度——他们就会幻想一个 10 的 1001 次方复杂度的体系，以一种莫名其妙的残暴、冷漠和邪恶把前者干掉，就像人类无意间捏死细菌一样。</span></p><p><span>这种思维极其幼稚。</span></p><p><span>他们没有意识到“有限性”。存在的意义来自有限性，来自窗口期。意义要在差异性的符号系统中产生，而一个系统要稳定维持差异，它就必然要设立边界，包括认识论的边界：“我不表达你了，你比我更高的能级，对我来说不存在。”</span></p><p><span>悲剧必须被符号系统注册，否则它根本不存在为悲剧。</span>
+<span> 如果太阳风暴毁灭了人类文明，叙事消失，符号系统被摧毁，那么所谓的“悲凉结局”不会被符号化，没有叙事框架，没有见证者，也就没有意义。</span></p><p><span>宇宙悲观主义的这些人，却把宇宙想象成能级比拼场：能级越大越厉害，高能级干死低能级。这其实是 1-1-1-2 那种“上升性”的延续：从纯空间到物质、到生命、到动物，复杂度越来越高——一个文明斗兽场。</span></p><p><span>但问题是：</span>
+<span> </span><strong><span>这个斗兽场是怎么来的？</span></strong>
+<span> 它的符号化与涌现，不需要本体论的支撑吗？</span>
+<span> 它的显现不是必须通过主体的中介，通过我们体验到“世界存在”之后，我们才能回过头把它理解为有能级梯度的场所吗？</span></p><p><span>1-1-1-4 却坚持认为宇宙是一个能级比拼场，而且能级可以无限扩张。</span>
+<span> 对我们人类来说，我们有生老病死、爱恨情仇，智慧复杂度有限，能掌控的能级也有限：发电、烧火、玩电子游戏，顶多搞个核弹。</span></p><p><span>于是我们感觉，在宇宙法则中没有任何法则为我们撑腰，没有任何法则为有限的人类主体在中介世界时提供保障。我们作为中介者、观众、体验者，就是剧场里的小人物。剧场一旦开始上演更高能级的东西，我们就会被抛弃、被干掉；然后更高级的又被更更高级的干掉——没有任何结构会束缚能级的无限上拉。</span></p><p><span>他们相信能约束毁灭性的力量的，就是更强的力量；但既然可以约束，也就能毁灭。于是他们设定了一种无限增长的机制——原本是 1-1-1-3 的“幸福增长”，现在变成恐惧的增长、绝望的增长、被害妄想的增长。</span></p><p><span>他们相信反物质之后还有更高维力量，而更高维之后还有能操控宇宙叙事的人。但他们始终没意识到，这些力量不是同质的。他们的问题就是把所有互相制约的力量都看成同一种东西，只是能级不同而已。</span></p><p><span>在本体论上，他们认为这些力量的本质都是能量、都是能级，是让场域里事物性状发生变化的力量，也就是所谓的“话语权”。如果把宇宙看成一个符号系统，那么谁的智慧更强、能级更高，谁就掌握更强的话语权。</span></p><p><span>这种本体论，本质上是物理主义者或科学实在论者的幻想：幻想不同的物理秩序之间存在话语权的强弱。所以，能够驾驭话语权更强的秩序——比如反物质、暗物质——就更“吊”，能级更高；人类只能驾驭裂变、聚变，所以能级一般。</span></p><p><span>这种小说写来写去，就是“谁家爸爸更厉害”那种比大小游戏，完全是小孩子在地上打滚的玩意儿。这些人毫无政治经验，也没有对符号学、结构性、精神性之间张力的反思，把一切现实现象同质化为“能量导致的感觉体验”。</span></p><p><span>这种意识形态的底层，是数学——无限叠加的符号学能指 S2。当这种科学话语被拿去为主人的话语 S1 辩护时，它会发生冲突，导致主体性的匮乏，导致去抑症化，最终觉得一切都没有意义，整个人精神崩溃。</span></p><p><span>这种意识形态往往出现在一类人身上：他们对科学其实并不热爱，生活里有一点小成就，但往上爬不上去。他们看不起具体、精细、真正艰苦的科研活动，反而用一种悲情的审美化叙事口吻告诉大家：“玩这个游戏的终极，就是没有意识的，是空的。”</span>
+<span> 于是他们掉进虚无主义和相对主义里——骨子里绝望，但这种绝望又是自恋性的：越觉得世界没意义，越觉得自己的一生“了不起”“多宝贵”。</span></p><p><span>这种意识形态实在太蠢了。</span></p><p><span>你真正该做的，是把科学去意识形态化，研究底层的话语结构、底层的符号学关系，并意识到这些关系里存在大量不确定性。宇宙不是一个“白嫖的斗兽场”，而是必须经由主体性的中介、经由符号系统自我注册之后，才能成立的叙事空间。</span></p><p><span>精神的力量，不在于参与那个无聊的“比大小”的无限游戏，而在于以否定性的姿态，给这种无意义的量的堆叠画上一个句点，从而赢得自身的位面。</span></p><p><span>好，我们就讲到这里。</span></p></div></div>
+</body>
+</html>
