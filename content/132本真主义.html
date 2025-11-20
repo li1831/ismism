@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>132本真主义</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>我们要讲&quot;主义主义&quot;的1-3。这是一种庸俗的唯我论。1-3-1我们讲完了，是庸俗的唯心主义。今天讲1-3-2，也就是庸俗的存在主义，实际上就是本真主义——我们又可以把它叫做&quot;文青病&quot;。</span></p><p><span>我们来看它的结构。在场域论这边，&quot;一&quot;还是那个不反思的宇宙或者天地。因为是一，所以它被设定为一个统一体，一个有序的、整全的统一体，有一种宇宙秩序贯穿其中。</span></p><p><span>在本体论上，这里不再是某种精神，而是一种&quot;本我&quot;（Authentic self），也就是本真的自我。这个本我调和着存在与存在者之间的矛盾——具体来说，它调和大写的Being和小写的beings之间的矛盾。你也可以说，是用本真性的自我意识作为整个秩序的载体。</span></p><p><span>这个本我在宇宙场域里面，天然地存在着一种本体论上的对抗：一边是创新性的、开放性的力量，另一边只是显现的、被创造的具体东西。你也可以把它看成一个普遍抽象的维度，和一个具体特殊的维度之间的对抗。</span></p><p><span>因为在这个场域里，我们已经把场域本身设定为融贯的。所以在这个本体论的维度上，具体存在的东西必然会受到符号学上的二分。一些东西会被把握为符号学的背景框架，这些框架会被实体化、超越化，变成一种普遍的抽象存在。而另外一部分被这个框架所刻画、所决定的东西，就变成了具体的存在者，在框架下被定义、被描述。</span></p><p><span>这两个东西实际上就是一个主奴关系。这种主奴关系需要被调和，否则凭什么由你来定义我？为什么我不能反过来用具体的东西去定义你那些抽象的、本体性的、普遍的东西呢？</span></p><p><span>为了克服这个，他们告诉你有一个东西在那边决定着，这就是一种宇宙意识、宇宙的灵魂。但在本真主义里，这个东西被看成本真的自我。而且这个本真的自我，是可以被第一人称意识所确定的——就是说，具体的个人意识可以体验到它，可以成为它，可以成为这个真我。这就是本体论。</span></p><p><span>在认识论上，这里是&quot;二&quot;，意味着对抗。不是&quot;三&quot;，&quot;三&quot;意味着两个东西的对抗被一个东西调和了。所以1-3-2就是一种本真对抗非本真的结构。文青最喜欢讨论这个概念对子——什么本真的还是异化的，真的还是虚伪的。</span></p><p><span>本真是authentic，非本真是inauthentic或者alienated。一般的初级文青只会说&quot;非本真&quot;，他们根本把握不了&quot;异化&quot;是什么。异化这个词，简单说就是你在符号学上变成了一个外星人，进入了另一个符号学网络体系，跟你已经不是同一个种族了。</span></p><p><span>真正的异化严重到，你看一个人在符号学上就觉得他跟你不是一个种族，他已经进入了新的符号学网络体系。</span></p><p><span>异化这个词是卢卡奇提出来的，是个西马概念，后来被法兰克福学派用起来。它指的是你自己创造的力量反过来束缚了你，你所创造的符号系统反过来约束甚至定义了你的本性。</span></p><p><span>但在黑格尔主义的意义上，异化有什么了不起的？如果我们承认卢卡奇是黑格尔主义者，那么在黑格尔看来，一切反思性的认同（reflective identity）都是一种异化，这是不可避免的。所以异化本身就是本真的。</span></p><p><span>你悄悄去幻想一种没被异化的本真性，这个时候真正的异化才发生。这个时候就是保守主义、极右翼意识形态占据上风的时候——因为人们害怕被异化，这种害怕本身才是真正的异化。</span></p><p><span>好了朋友们，我们现在来看这个对立。一般的文青病，他的世界就分为两种维度。在认识论上有两种心灵状态——你可以把认识论看成是一个主体性的维度，在我的体系里是一个大认识论，是对一切显现现象的把握，包括消极否定性的现象。所以主体的自我认同也包含在这个维度里面。</span></p><p><span>所谓的文青，就是认为自我认同有一个本真的我，和一个非本真的、异化的我。这种本真主义者会自吹为&quot;存在主义者&quot;，哪怕他根本没怎么读过萨特。萨特作为剧作家确实有点本真主义，作为哲学家也跌跌撞撞不算成功，但存在主义本身也不是这种本真主义。</span></p><p><span>既不是海德格尔主义，也不是萨特式的，更不是克尔凯郭尔的。这种本真主义是嬉皮士式的，是流俗的。它本身是一种&quot;非本真的本真主义&quot;，是低智商的、前反思的。一字头的他根本不反思，已经默认背后有一个背景性的秩序，规定好了哪些东西是本真的，哪些是非本真的。</span></p><p><span>所以老实讲，这些人其实都是本质主义者。他既然是本质主义的，凭什么说自己是存在主义者？存在主义告诉你，就是这个本质维度、规定性的维度、符号学秩序本身他妈的根本不存在！所以如果你真是个存在主义者，你这里绝对不可能是一。存在主义无论哪一种，它的场域论这里不可能是&quot;一&quot;。</span></p><p><span>如果你还在幻想宇宙背后是个整体、是个统一有序和谐的整体，哪怕你想象得再深邃神秘，只要你默认它是和谐有序的，那你就不是存在主义者。真正的存在主义是生活在刀尖上的，这三位哲学家内心都是活在刀山火海上的。你们有没有听过&quot;存在主义危机&quot;？过不去的人是真的会自杀的。真正的存在主义是很野的、非常野性的，不存在什么小资情调、内心宁静的存在主义。</span></p><p><span>你只是个庸俗的本真主义者，别这样说了。</span></p><p><span>本真主义本质上是个庸俗的唯我论。真正的唯我论肯定不是一字头。真正的唯我论认为这个秩序本身也是由自我意识设定的。只有一字头才会设想有个总体场域，并把它看成有稳固的背景性秩序。</span></p><p><span>这个背景秩序首先就是语言，他们认为有一种超语言（Meta-language）。他们认为这种超语言是有个大他者能理解的，这个大他者就是这个本我。这个超语言就是那种言出法随的语言，心念一动就能设定下面的场域和本体论。</span></p><p><span>一字头的人都相信这个，哪怕是科学实在论者也相信。一杠三则认为有个宇宙心灵，宇宙心灵过着本我，言出法随，整个世界就靠它不停的叨叨而显现、稳固、延续下去。</span></p><p><span>所以这些庸俗唯我论者，如果把认识论的现象维度看成二分的——一个本真一个非本真，那他就是本真主义者。他肯定会站到&quot;本真&quot;那边。本真和非本真的二分，其实也是一种不对称二分，背后还是嵌入了一个否定词，是亚里士多德分类学意义上的二分。怎么定义本真呢？就是&quot;不是非本真&quot;。所以这些本真主义者很快就陷入如何定义本真性的问题，他们解决不了。</span></p><p><span>所以他们往往依附于文化权威、美学权威、学术权威。这些一开头的人骨子里都是奴才。他们会依附于这些权威，所以这些1-3-2的本真主义者往往是小布尔乔亚。他们不敢质疑开头的&quot;一&quot;，也不敢质疑中间的&quot;三&quot;这个本我。他们会设定某些艺术家或文人获得了本我的显现，比如张爱玲、姜文、三毛、海子、王小波，文学青年纳头便拜的对象。高级点的会拜萨特、加缪，再高级点拜古人、神秘主义者，什么克里希那穆提这种邪教小头子，他们把这些人都抬成本真的化身。</span></p><p><span>学术圈里很多这种人，哲学系读海德格尔的、搞诗学的、搞古典学艺不精的、搞禅宗学艺不精的，都会变成这种小布尔乔亚文青。他们靠一点点文化资本吃饭，把这点文化资本捧上天，说这个东西很本真，市场应该出高价买它。但你既然本真，干嘛进市场？你应该和资本主义市场告别，一分钱不要，宁愿饿死才对。</span></p><p><span>就算出家，如果吃的斋饭是骗来的钱买的，也不本真。大师父出去讲课卖安慰剂给商人权贵，这也不本真。但这些家伙，只要大师父把&quot;一&quot;的位置一占，他就萎了。大师父说&quot;学佛之人要懂得与世为善，不能太有批判性&quot;，他就信了。文化圈这种人一抓一大把，嘴巴上都叫本真主义。</span></p><p><span>他们不敢质疑建制——不一定是行政建制，也包括市场建制里占位置的那些文化权威。这些文化权威都是磨牙吮血、杀人如麻的，吃人不吐骨头。你们没接触过，以为他们面皮洁白圣洁，其实骨子里是无穷无尽的血水，创造的痛苦由无数人给挡着。</span></p><p><span>这种本真主义者，看到哲学的时候会产生一种晕眩。他觉得学哲学的人就是那个大他者，就是那个理应知道（supposed to know）的、本真的自我。他会不停地问：&quot;我到底懂了没有？我今天看存在主义还是看不懂，看精神现象学还是看不懂，我到底懂了没有？&quot;</span></p><p><span>不好意思，你如果是个本真主义者，你永远不会懂，永远懂不了。因为你的目的就是不懂啊！你的目的就是要设立一个本真的、永远不可理解的维度。你再怎么懂，也只懂个皮毛。你设立这个本真维度，就是为了给你暂时的非本真状态找一个向往的方向，一个梦境，让你可以接受。</span></p><p><span>那些《存在与时间》《存在与虚无》这类书，存在的目的只是为这种本真主义者提供一个梦。他们永远不相信自己懂了，就算不懂也永远捧着。我有个室友就是这样，永远不相信自己懂了这些东西，后来去学哲学了。这种人最怕世界上有人用非本真的方式——也就是他自己熟悉的那种状态——走出一条他不理解的路。他就想不通了：&quot;这小伙是不是蝇营狗苟的，他为什么就能走出那条路？&quot;这个时候他就产生了嫉妒。</span></p><p><span>所以这种本真主义者内心实际上有一种嫉妒，有一种严重的不自信、自卑，这就是强迫神经症——强迫自己不理解那些东西。他们还会说：&quot;海子不是怂逼，海子哥内心有很多超越性的洞见，只不过你们不懂，我也不懂哦。&quot;但海子不是照样死了？他不是犯了很大错误？他不是没给这个文化共同体给出任何走得通的路？他没告诉你华尔街怎么消亡，没告诉你硅谷技术共同体怎么消亡。他无能啊！你感受到他的本真性，只不过是他老老实实告诉你：他是无能的，是有限的，没办法思考这些问题。然后你们把他神化了。</span></p><p><span>特别是某些名师的徒子徒孙，这些名士自己可能比较谦虚，但他们教出来的徒弟会故意自卑，说：&quot;我老师是真的进了大道的，而我只不过是在门前狂吠的狗而已。&quot;这种刻意为之的自卑，就是为了设立&quot;我是非本真的&quot;，反过来抬他老师。每个院系、每个小庙都会把一两个人抬高捧上天，然后自居其下，自甘居于其下。</span></p><p><span>这种人还会把尼采也捧成本真的象征。尼采本人确实有点想扮演这个角色，但这个时候&quot;本真&quot;已经不仅仅关乎真理了。本真主义者根本不在乎真理，他们在乎的是追求一种让他们感到神圣高洁、能摆脱一切世俗欲念的真我。</span></p><p><span>还有一点：这种本真主义者往往都是爱情上的失败者。他不是爱情至上主义者，而是爱情失败主义者，而且必须通过失败来自我感动。只要不停失恋，只要自虐，他就能从否定性中触碰到一个关于&quot;真爱&quot;的幻想。他会带着嫉妒和怨念，认为那个离开他的人注定会异化，会进入非本真的生活。</span></p><p><span>他们喜欢用&quot;蝇营狗苟&quot;这个词，但他们理解的蝇营狗苟就是低俗、铜臭、没文化。可真正的存在主义反而觉得蝇营狗苟是高级的。海德格尔会认为，那些农夫农妇一天到晚盘算琐碎小事、互相争吵，这种看似低级的东西才是本真的。对于我们左派来说，更不存在一概而论的蝇营狗苟。如果你是正义的，再小的利益也要争取；如果文化是反动的资产阶级文化，那就要拆除它。所以没有一个一概而论的&quot;非本真&quot;。</span></p><p><span>这个&quot;本真/非本真&quot;的话语权最终掌握在谁手里？还不是掌握在那些文化权威手里。这些在建制中占了位置的家伙，都是磨牙吮血、杀人如麻的，吃人不吐骨头。你对他们抱有幻想，是因为你没真正接触过他们。他们面皮洁白圣洁，骨子里却是无穷无尽的血水，创造的痛苦由无数人挡着。</span></p><p><span>什么是真正的存在主义？后面我们会介绍克尔凯郭尔、海德格尔、萨特，还有德雷福斯这种被阉割的克尔凯郭尔主义，以及女性存在主义、存在主义马克思主义等等。感兴趣的可以继续听。</span></p><p><span>但首先，你这个软骨头先站起来。不要做这种庸俗肤浅的本真主义者。这种人太多了，你看他的立场、他的利益屁股，看他靠什么生存？钱从哪来？靠信奉、吹捧某些大师，把那些东西当成自我认同的标杆。谁去质疑、去喷那些东西，他立刻摆出爪牙那种最庸俗的丑脸。戳到他痛处，他的道场就乱了。</span></p><p><span>先这样，就这样了，拜拜。</span></p></div></div>
+</body>
+</html>
